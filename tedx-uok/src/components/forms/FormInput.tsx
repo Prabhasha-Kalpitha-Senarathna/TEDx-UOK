@@ -4,14 +4,14 @@ interface FormInputProps {
   label: string;
   name: string;
   type?:  string;
-  value: string;
+  value:  string;
   onChange: (name: string, value: string) => void;
   placeholder?: string;
   error?: string;
   required?: boolean;
 }
 
-export const FormInput: React. FC<FormInputProps> = ({
+export const FormInput: React.FC<FormInputProps> = ({
   label,
   name,
   type = 'text',
@@ -36,7 +36,11 @@ export const FormInput: React. FC<FormInputProps> = ({
 
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-300" style={{ letterSpacing: '0' }}>
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-300" 
+        style={{ letterSpacing: '0', textAlign: 'left' }}
+      >
         {label} {required && <span style={{ color: '#EB0028' }}>*</span>}
       </label>
       <input
@@ -64,11 +68,11 @@ export const FormInput: React. FC<FormInputProps> = ({
           letterSpacing: '0',
         }}
         required={required}
-        aria-invalid={error ? 'true' : 'false'}
+        aria-invalid={error ? 'true' :  'false'}
         aria-describedby={error ? `${name}-error` : undefined}
       />
       {error && (
-        <p id={`${name}-error`} className="text-sm mt-1" style={{ color: '#EB0028', letterSpacing: '0' }}>
+        <p id={`${name}-error`} className="text-sm mt-1" style={{ color: '#EB0028', letterSpacing: '0', textAlign: 'left' }}>
           {error}
         </p>
       )}

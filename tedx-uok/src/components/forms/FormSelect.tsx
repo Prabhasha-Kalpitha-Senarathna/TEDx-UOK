@@ -31,13 +31,17 @@ export const FormSelect: React.FC<FormSelectProps> = ({
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    onChange(name, e. target.value);
+    onChange(name, e.target.value);
   };
 
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-300" style={{ letterSpacing: '0' }}>
-        {label} {required && <span style={{ color:  '#EB0028' }}>*</span>}
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-300" 
+        style={{ letterSpacing: '0', textAlign: 'left' }}
+      >
+        {label} {required && <span style={{ color: '#EB0028' }}>*</span>}
       </label>
       <select
         id={name}
@@ -57,7 +61,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({
           borderRadius: '0.5rem',
           padding: '0.75rem 1rem',
           width: '100%',
-          color: value ? '#FFFFFF' : '#6B7280',
+          color: value ?  '#FFFFFF' : '#6B7280',
           outline:  'none',
           cursor: 'pointer',
           letterSpacing: '0',
@@ -80,7 +84,7 @@ export const FormSelect: React.FC<FormSelectProps> = ({
         ))}
       </select>
       {error && (
-        <p id={`${name}-error`} className="text-sm mt-1" style={{ color: '#EB0028', letterSpacing: '0' }}>
+        <p id={`${name}-error`} className="text-sm mt-1" style={{ color: '#EB0028', letterSpacing: '0', textAlign: 'left' }}>
           {error}
         </p>
       )}

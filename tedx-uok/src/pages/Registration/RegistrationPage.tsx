@@ -13,7 +13,7 @@ interface RegistrationFormData {
 }
 
 interface FormErrors {
-  full_name?: string;
+  full_name?:  string;
   email?: string;
   phone?: string;
   ticket_type?: string;
@@ -38,7 +38,7 @@ export const RegistrationPage: React. FC = () => {
   // Set body background to black when component mounts
   useEffect(() => {
     document.body. style.backgroundColor = '#000000';
-    document.body.style.margin = '0';
+    document.body.style. margin = '0';
     document. body.style.padding = '0';
     document. documentElement.style.backgroundColor = '#000000';
     
@@ -72,7 +72,7 @@ export const RegistrationPage: React. FC = () => {
     // Validate full_name
     if (!formData. full_name.trim()) {
       newErrors.full_name = 'Full name is required';
-    } else if (formData. full_name.trim().length < 2) {
+    } else if (formData.full_name.trim().length < 2) {
       newErrors.full_name = 'Name must be at least 2 characters';
     }
 
@@ -114,7 +114,7 @@ export const RegistrationPage: React. FC = () => {
     }
   };
 
-  const handleSubmit = async (e: React. FormEvent) => {
+  const handleSubmit = async (e:  React.FormEvent) => {
     e.preventDefault();
     setSubmitMessage(null);
 
@@ -136,8 +136,8 @@ export const RegistrationPage: React. FC = () => {
       console.log('Registration Data:', formData);
 
       setSubmitMessage({
-        type:  'success',
-        text:  'Registration successful! Check your email for confirmation.',
+        type: 'success',
+        text: 'Registration successful! Check your email for confirmation.',
       });
 
       // Reset form after successful submission
@@ -151,8 +151,8 @@ export const RegistrationPage: React. FC = () => {
       setErrors({});
     } catch (error) {
       setSubmitMessage({
-        type:  'error',
-        text:  'Something went wrong. Please try again.',
+        type: 'error',
+        text: 'Something went wrong. Please try again.',
       });
     } finally {
       setLoading(false);
@@ -184,14 +184,14 @@ export const RegistrationPage: React. FC = () => {
           bottom:  0,
         }}
       >
-        <div className="min-h-screen bg-black py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg: px-8">
+        <div className="min-h-screen bg-black py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto w-full">
             <div className="text-center mb-12">
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
                 Event <span style={{ color: '#EB0028' }}>Registration</span>
               </h1>
               <p className="text-lg" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
-                Secure your spot at <span style={{ color: '#EB0028' }}>TED<sup style={{ color: '#EB0028' }}>x</sup></span> <span style={{ color: '#FFFFFF' }}>UOK</span>
+                Secure your spot at <span style={{ color: '#EB0028' }}>TED<sup style={{ color: '#EB0028' }}>x</sup></span> <span style={{ color: '#FFFFFF' }}>UoK</span>
               </p>
             </div>
 

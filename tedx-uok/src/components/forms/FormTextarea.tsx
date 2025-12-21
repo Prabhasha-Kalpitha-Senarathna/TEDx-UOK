@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 interface FormTextareaProps {
   label: string;
-  name:  string;
+  name: string;
   value: string;
-  onChange: (name: string, value: string) => void;
+  onChange: (name: string, value:  string) => void;
   placeholder?: string;
   error?: string;
-  required?:  boolean;
+  required?: boolean;
   rows?: number;
 }
 
@@ -30,13 +30,17 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
     return '#1F1F1F';
   };
 
-  const handleChange = (e: React. ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(name, e.target.value);
   };
 
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-300" style={{ letterSpacing:  '0' }}>
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-300" 
+        style={{ letterSpacing: '0', textAlign: 'left' }}
+      >
         {label} {required && <span style={{ color: '#EB0028' }}>*</span>}
       </label>
       <textarea
@@ -70,7 +74,7 @@ export const FormTextarea: React.FC<FormTextareaProps> = ({
         aria-describedby={error ? `${name}-error` : undefined}
       />
       {error && (
-        <p id={`${name}-error`} className="text-sm mt-1" style={{ color: '#EB0028', letterSpacing: '0' }}>
+        <p id={`${name}-error`} className="text-sm mt-1" style={{ color: '#EB0028', letterSpacing: '0', textAlign: 'left' }}>
           {error}
         </p>
       )}

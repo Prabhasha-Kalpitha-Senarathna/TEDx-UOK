@@ -49,7 +49,11 @@ const FormInput = ({
 
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-300">
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-300"
+        style={{ letterSpacing:  '0', textAlign: 'left' }}
+      >
         {label} {required && <span className="text-[#EB0028]">*</span>}
       </label>
       <input
@@ -78,7 +82,7 @@ const FormInput = ({
         }}
         required={required}
       />
-      {error && <p className="text-[#EB0028] text-sm mt-1">{error}</p>}
+      {error && <p className="text-[#EB0028] text-sm mt-1" style={{ letterSpacing: '0', textAlign: 'left' }}>{error}</p>}
     </div>
   );
 };
@@ -95,15 +99,15 @@ const FormTextarea = ({
 }: {
   label: string;
   name: string;
-  value:  string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  value: string;
+  onChange: (e:  React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
-  error?: string;
+  error?:  string;
   required?: boolean;
   rows?: number;
 }) => {
   const [isFocused, setIsFocused] = React.useState(false);
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = React. useState(false);
 
   const getBorderColor = () => {
     if (error) return '#EB0028';
@@ -113,7 +117,11 @@ const FormTextarea = ({
 
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-300">
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-300"
+        style={{ letterSpacing: '0', textAlign: 'left' }}
+      >
         {label} {required && <span className="text-[#EB0028]">*</span>}
       </label>
       <textarea
@@ -143,7 +151,7 @@ const FormTextarea = ({
         }}
         required={required}
       />
-      {error && <p className="text-[#EB0028] text-sm mt-1">{error}</p>}
+      {error && <p className="text-[#EB0028] text-sm mt-1" style={{ letterSpacing: '0', textAlign: 'left' }}>{error}</p>}
     </div>
   );
 };
@@ -163,9 +171,9 @@ const FormSelect = ({
   onChange:  (e: React.ChangeEvent<HTMLSelectElement>) => void;
   options: string[];
   error?: string;
-  required?:  boolean;
+  required?: boolean;
 }) => {
-  const [isFocused, setIsFocused] = React. useState(false);
+  const [isFocused, setIsFocused] = React.useState(false);
   const [isHovered, setIsHovered] = React.useState(false);
 
   const getBorderColor = () => {
@@ -176,7 +184,11 @@ const FormSelect = ({
 
   return (
     <div className="space-y-2">
-      <label htmlFor={name} className="block text-sm font-medium text-gray-300">
+      <label 
+        htmlFor={name} 
+        className="block text-sm font-medium text-gray-300"
+        style={{ letterSpacing: '0', textAlign:  'left' }}
+      >
         {label} {required && <span className="text-[#EB0028]">*</span>}
       </label>
       <select
@@ -189,16 +201,16 @@ const FormSelect = ({
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
-          transition: 'border-color 0.3s ease',
+          transition:  'border-color 0.3s ease',
           borderWidth: '2px',
           borderStyle: 'solid',
           borderColor: getBorderColor(),
           backgroundColor: '#0E0E0E',
-          borderRadius: '0.5rem',
+          borderRadius:  '0.5rem',
           padding: '0.75rem 1rem',
-          width:  '100%',
-          color:  '#FFFFFF',
-          outline:  'none',
+          width: '100%',
+          color: '#FFFFFF',
+          outline: 'none',
           letterSpacing: '0',
         }}
         required={required}
@@ -212,22 +224,22 @@ const FormSelect = ({
           </option>
         ))}
       </select>
-      {error && <p className="text-[#EB0028] text-sm mt-1">{error}</p>}
+      {error && <p className="text-[#EB0028] text-sm mt-1" style={{ letterSpacing: '0', textAlign: 'left' }}>{error}</p>}
     </div>
   );
 };
 
-const VolunteersPage:  React.FC = () => {
+const VolunteersPage: React.FC = () => {
   const [formData, setFormData] = React.useState<FormData>({
-    full_name: '',
+    full_name:  '',
     email: '',
     phone: '',
-    university:  '',
+    university: '',
     faculty: '',
     year_of_study: '',
     preferred_role: '',
     availability: '',
-    previous_experience: '',
+    previous_experience:  '',
     skills: '',
     motivation: '',
     cv_url: '',
@@ -235,7 +247,7 @@ const VolunteersPage:  React.FC = () => {
 
   const [errors, setErrors] = React.useState<FormErrors>({});
   const [submitStatus, setSubmitStatus] = React.useState<'idle' | 'success' | 'error'>('idle');
-  const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+  const [selectedFile, setSelectedFile] = React. useState<File | null>(null);
 
   React.useEffect(() => {
     document.body.style.backgroundColor = '#000000';
@@ -259,12 +271,12 @@ const VolunteersPage:  React.FC = () => {
     }
   };
 
-  const handleFileChange = (e: React. ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files[0]) {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target. files && e.target.files[0]) {
       const file = e.target.files[0];
       const maxSize = 5 * 1024 * 1024;
       
-      if (file.size > maxSize) {
+      if (file. size > maxSize) {
         setErrors((prev) => ({ ...prev, cv_file: 'File size must be less than 5MB' }));
         setSelectedFile(null);
         return;
@@ -278,19 +290,19 @@ const VolunteersPage:  React.FC = () => {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
-    if (!formData.full_name. trim()) newErrors.full_name = 'Full name is required';
-    if (! formData.email.trim()) {
+    if (!formData.full_name.trim()) newErrors.full_name = 'Full name is required';
+    if (!formData.email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/. test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(formData. email)) {
       newErrors.email = 'Email is invalid';
     }
     if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (! formData.university.trim()) newErrors.university = 'University is required';
+    if (!formData.university.trim()) newErrors.university = 'University is required';
     if (!formData.faculty.trim()) newErrors.faculty = 'Faculty is required';
-    if (!formData.year_of_study) newErrors.year_of_study = 'Year of study is required';
+    if (!formData. year_of_study) newErrors.year_of_study = 'Year of study is required';
     if (!formData. preferred_role) newErrors.preferred_role = 'Preferred role is required';
     if (!formData.availability) newErrors.availability = 'Availability is required';
-    if (!formData.motivation. trim()) newErrors.motivation = 'Motivation is required';
+    if (! formData.motivation.trim()) newErrors.motivation = 'Motivation is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -372,14 +384,14 @@ const VolunteersPage:  React.FC = () => {
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
+        bottom:  0
       }}>
         <div className="min-h-screen bg-black py-12 px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
-  Volunteer Application for <span style={{ color: '#EB0028' }}>TED<sup style={{ color: '#EB0028' }}>x</sup></span> <span style={{ color: '#FFFFFF' }}>UOK</span>
-</h1>
+                Volunteer Application for <span style={{ color: '#EB0028' }}>TED<sup style={{ color: '#EB0028' }}>x</sup></span> <span style={{ color: '#FFFFFF' }}>UoK</span>
+              </h1>
               <p className="text-gray-400 text-lg" style={{ letterSpacing: '0' }}>
                 Join our team and help create an unforgettable experience
               </p>
@@ -415,7 +427,7 @@ const VolunteersPage:  React.FC = () => {
 
             <form onSubmit={handleSubmit} className="bg-[#0A0A0A] border border-[#1F1F1F] rounded-xl p-8 space-y-6">
               <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
+                <h2 className="text-2xl font-bold mb-6 flex items-center justify-center" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
                   <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color: '#FFFFFF' }}>
                     1
                   </span>
@@ -452,8 +464,8 @@ const VolunteersPage:  React.FC = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center" style={{ color:  '#FFFFFF', letterSpacing:  '0' }}>
-                  <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color: '#FFFFFF' }}>
+                <h2 className="text-2xl font-bold mb-6 flex items-center justify-center" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
+                  <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color:  '#FFFFFF' }}>
                     2
                   </span>
                   Academic Information
@@ -487,8 +499,8 @@ const VolunteersPage:  React.FC = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center" style={{ color:  '#FFFFFF', letterSpacing:  '0' }}>
-                  <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color: '#FFFFFF' }}>
+                <h2 className="text-2xl font-bold mb-6 flex items-center justify-center" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
+                  <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color:  '#FFFFFF' }}>
                     3
                   </span>
                   Volunteer Details
@@ -533,7 +545,7 @@ const VolunteersPage:  React.FC = () => {
                     name="motivation"
                     value={formData.motivation}
                     onChange={handleChange}
-                    placeholder="Tell us what motivates you to join TEDx UOK..."
+                    placeholder="Tell us what motivates you to join TEDx UoK..."
                     error={errors.motivation}
                     rows={4}
                   />
@@ -541,22 +553,22 @@ const VolunteersPage:  React.FC = () => {
               </div>
 
               <div>
-                <h2 className="text-2xl font-bold mb-6 flex items-center" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
-                  <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color:  '#FFFFFF' }}>
+                <h2 className="text-2xl font-bold mb-6 flex items-center justify-center" style={{ color: '#FFFFFF', letterSpacing: '0' }}>
+                  <span className="w-8 h-8 bg-[#EB0028] rounded-full flex items-center justify-center text-sm font-bold mr-3" style={{ color: '#FFFFFF' }}>
                     4
                   </span>
                   CV / Resume
                 </h2>
                 <div className="space-y-4">
                   <div className="space-y-3">
-                    <label className="block text-sm font-medium text-gray-300" style={{ letterSpacing: '0' }}>
+                    <label className="block text-sm font-medium text-gray-300" style={{ letterSpacing: '0', textAlign: 'left' }}>
                       Upload CV <span className="text-gray-500">(Optional)</span>
                     </label>
                     
                     <div className="relative">
                       <input
                         type="file"
-                        accept=".pdf,.doc,.docx"
+                        accept=".pdf,.doc,. docx"
                         onChange={handleFileChange}
                         className="hidden"
                         id="cv-upload"
@@ -587,7 +599,7 @@ const VolunteersPage:  React.FC = () => {
                       </label>
                     </div>
 
-                    {errors.cv_file && <p className="text-[#EB0028] text-sm mt-1" style={{ letterSpacing: '0' }}>{errors.cv_file}</p>}
+                    {errors.cv_file && <p className="text-[#EB0028] text-sm mt-1" style={{ letterSpacing: '0', textAlign: 'left' }}>{errors.cv_file}</p>}
 
                     <div className="flex items-center space-x-4 my-4">
                       <div className="flex-1 h-px bg-[#1F1F1F]"></div>
@@ -606,7 +618,7 @@ const VolunteersPage:  React.FC = () => {
                       required={false}
                     />
                     
-                    <p className="text-gray-500 text-xs flex items-start space-x-2" style={{ letterSpacing: '0' }}>
+                    <p className="text-gray-500 text-xs flex items-start space-x-2" style={{ letterSpacing: '0', textAlign: 'left' }}>
                       <svg className="w-4 h-4 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"/>
                       </svg>
@@ -633,10 +645,18 @@ const VolunteersPage:  React.FC = () => {
             <div className="text-center mt-8 pb-8">
               <a
                 href="/volunteer"
-                className="text-[#EB0028] hover:underline inline-flex items-center space-x-2"
-                style={{ letterSpacing: '0' }}
+                style={{ 
+                  color: '#EB0028', 
+                  textDecoration: 'none', 
+                  letterSpacing: '0',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap:  '0.5rem'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#EB0028' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"/>
                 </svg>
                 <span>Back to Volunteer Information</span>
