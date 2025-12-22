@@ -101,7 +101,7 @@ const Agenda = () => {
     <div className="bg-black text-white min-h-screen pt-24 pb-20 overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header - Centered */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-16 md:mb-20" data-aos="fade-down">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
             Agenda
           </h1>
@@ -166,7 +166,7 @@ const Agenda = () => {
                         {/* Speaker Info - Icon and role in one line */}
                         {item.speaker && (
                           <div
-                            className={`flex items-center gap-3 text-white font-medium text-base sm:text-lg transition-opacity duration-500s ${
+                            className={`flex items-center gap-3 text-white font-medium text-base sm:text-lg transition-opacity duration-500 ${
                               isLeft ? "md:flex-row-reverse" : ""
                             }`}
                           >
@@ -187,13 +187,13 @@ const Agenda = () => {
                         )}
                         
                         {!item.speaker && (
-                          <div className="text-gray-400 italic text-sm sm:text-base transition-opacity duration-500">
+                          <div className="text-gray-400 italic text-sm sm:text-base transition-opacity duration-500 md:group-hover:opacity-0">
                             Event Logistics
                           </div>
                         )}
 
                         {/* Description - Hidden on mobile, shows on hover for desktop */}
-                        <div className="hidden md:block opacity-0 translate-y-4 transition-all duration-800 group-hover:opacity-100 group-hover:translate-y-2">
+                        <div className="hidden md:block opacity-0 translate-y-4 transition-all duration-500 group-hover:opacity-100 group-hover:translate-y-0">
                           <p className="text-gray-300 text-sm leading-relaxed">
                             {item.description}
                           </p>
