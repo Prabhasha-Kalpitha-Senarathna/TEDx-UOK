@@ -6,6 +6,8 @@ import HomePage from "../pages/Home/HomePage";
 // import SpeakersPage from "../pages/Speakers/SpeakersPage";
 import RegistrationPage from "../pages/Registration/RegistrationPage";
 import Agenda from "../pages/Agenda/AgendaPage";
+import PartnersPage from "../pages/Partners/PartnersPage";
+import TeamPage from "../pages/Team/TeamPage";
 // import Theme from "../pages/Theme/Theme";
 
 function AnimatedRoutes() {
@@ -29,7 +31,22 @@ function AnimatedRoutes() {
           </div>
         }
       />
-      {/* <Route path="/partners" element={<div key={location.pathname} className="page-transition"><PartnersPage /></div>} /> */}
+      <Route
+        path="/partners"
+        element={
+          <div key={location.pathname} className="page-transition">
+            <PartnersPage />
+          </div>
+        }
+      />
+      <Route
+        path="/team"
+        element={
+          <div key={location.pathname} className="page-transition">
+            <TeamPage />
+          </div>
+        }
+      />
       {/* <Route path="/contact" element={<div key={location.pathname} className="page-transition"><ContactPage /></div>} /> */}
       <Route
         path="/register"
