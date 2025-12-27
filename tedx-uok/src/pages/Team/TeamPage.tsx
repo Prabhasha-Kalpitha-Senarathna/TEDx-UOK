@@ -79,24 +79,24 @@ const TeamPage: React.FC = () => {
     switch (type) {
       case 'Licensee':
         return {
-          borderColor: 'border-purple-400',
-          bgGradient: 'from-purple-400/10 to-purple-600/5',
-          accentColor: 'text-purple-400',
-          icon: <UserCheck className="w-6 h-6" />
+          borderColor: 'border-[#EB0028]',
+          bgGradient: 'from-[#EB0028]/10 to-[#EB0028]/5',
+          accentColor: 'text-[#EB0028]',
+          icon: <UserCheck className="w-6 h-6 text-[#EB0028]" />
         };
       case 'EXCO':
         return {
-          borderColor: 'border-blue-400',
-          bgGradient: 'from-blue-400/10 to-blue-600/5',
-          accentColor: 'text-blue-400',
-          icon: <Users className="w-6 h-6" />
+          borderColor: 'border-[#EB0028]',
+          bgGradient: 'from-[#EB0028]/10 to-[#EB0028]/5',
+          accentColor: 'text-[#EB0028]',
+          icon: <Users className="w-6 h-6 text-[#EB0028]" />
         };
       case 'Director':
         return {
-          borderColor: 'border-green-400',
-          bgGradient: 'from-green-400/10 to-green-600/5',
-          accentColor: 'text-green-400',
-          icon: <UserCog className="w-6 h-6" />
+          borderColor: 'border-[#EB0028]',
+          bgGradient: 'from-[#EB0028]/10 to-[#EB0028]/5',
+          accentColor: 'text-[#EB0028]',
+          icon: <UserCog className="w-6 h-6 text-[#EB0028]" />
         };
       default:
         return {
@@ -133,13 +133,13 @@ const TeamPage: React.FC = () => {
               key={member.id}
               data-aos="fade-up"
               data-aos-delay={index * 100}
-              className={`${sharedStyles.card.base} bg-gradient-to-br ${typeStyles.bgGradient} ${typeStyles.borderColor} border-2 hover:border-opacity-80 transition-all duration-300 group`}
+              className={`bg-card border border-border rounded-lg overflow-hidden flex flex-col h-full shadow-lg hover:shadow-2xl bg-gradient-to-br ${typeStyles.bgGradient} ${typeStyles.borderColor} border-2 hover:border-opacity-80 transition-all duration-300 group`}
             >
               <div className={`${sharedStyles.card.imageContainer} relative overflow-hidden`}>
                 <img
                   src={member.photo_url}
                   alt={member.full_name}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300"
                   loading="lazy"
                   onError={(e) => {
                     e.currentTarget.src = 'https://via.placeholder.com/400x500/e8e2dc/666666?text=No+Image';
