@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
+import { Link } from "react-router-dom";
 
 export interface Speaker {
   id: number;
@@ -29,10 +30,12 @@ const Speakers = ({ speakers }: Props) => {
               the ideas
             </h2>
           </div>
-          <Button variant="tedxSecondary" size="lg">
-            View All Speakers
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          <Link to="/speakers">
+            <Button variant="tedxSecondary" size="lg">
+              View All Speakers
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
 
         {/* Speakers Grid */}
