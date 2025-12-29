@@ -30,7 +30,11 @@ interface EventDetails {
   };
 }
 
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
+
 const AgendaPage = () => {
+  useSEO(seoConfig.agenda);
   const [agendaItems, setAgendaItems] = useState<AgendaItem[]>([]);
   const [eventDetails, setEventDetails] = useState<EventDetails | null>(null);
   const [loading, setLoading] = useState(true);

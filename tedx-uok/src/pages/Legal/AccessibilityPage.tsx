@@ -1,19 +1,8 @@
-// src/pages/Legal/AccessibilityPage.tsx
-import { useEffect } from "react";
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 export default function AccessibilityPage() {
-  // SEO: Set page title and meta description
-  useEffect(() => {
-    document.title = "Accessibility Statement - Inclusive Event | TEDxUOK";
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "TEDxUOK is committed to digital and event accessibility. WCAG 2.1 compliant website, wheelchair access, sign language interpretation, and accommodations available."
-      );
-    }
-  }, []);
+  useSEO(seoConfig.accessibility);
 
   return (
     <main className="bg-black w-full">

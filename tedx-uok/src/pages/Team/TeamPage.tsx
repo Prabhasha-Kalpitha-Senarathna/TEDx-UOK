@@ -37,19 +37,21 @@ const TeamPage: React.FC = () => {
 
     const fetchTeamMembers = async () => {
       const { data, error } = await supabase
-        .from('team_members')
-        .select('*')
-        .order('display_order', { ascending: true });
+        .from("team_members")
+        .select("*")
+        .order("display_order", { ascending: true });
 
       if (error) {
-        console.error('Error fetching team members:', error);
+        console.error("Error fetching team members:", error);
       } else {
-        const teamBucket = (import.meta.env.VITE_SUPABASE_BUCKET_TEAM_PHOTOS as string) || 'team-photos';
+        const teamBucket =
+          (import.meta.env.VITE_SUPABASE_BUCKET_TEAM_PHOTOS as string) ||
+          "team-photos";
         const mappedMembers: TeamMember[] = (data || []).map((m: any) => ({
-          id: m.team_member_id?.toString() || '',
+          id: m.team_member_id?.toString() || "",
           full_name: m.full_name,
-          role: m.role || '',
-          type: (m.type as TeamMember['type']) || 'Director',
+          role: m.role || "",
+          type: (m.type as TeamMember["type"]) || "Director",
           photo_url: m.photo_url
             ? (String(m.photo_url).startsWith('http') || String(m.photo_url).startsWith('/')
               ? String(m.photo_url)
@@ -71,27 +73,29 @@ const TeamPage: React.FC = () => {
     return <Loading />;
   }
 
-  const licensees = teamMembers.filter(member => member.type === 'Licensee');
-  const executiveCommittee = teamMembers.filter(member => member.type === 'EXCO');
-  const directors = teamMembers.filter(member => member.type === 'Director');
+  const licensees = teamMembers.filter((member) => member.type === "Licensee");
+  const executiveCommittee = teamMembers.filter(
+    (member) => member.type === "EXCO"
+  );
+  const directors = teamMembers.filter((member) => member.type === "Director");
 
   const getTeamTypeStyles = (type: string) => {
     switch (type) {
-      case 'Licensee':
+      case "Licensee":
         return {
           borderColor: 'border-[#EB0028]',
           bgGradient: 'from-[#EB0028]/10 to-[#EB0028]/5',
           accentColor: 'text-[#EB0028]',
           icon: <UserCheck className="w-6 h-6 text-[#EB0028]" />
         };
-      case 'EXCO':
+      case "EXCO":
         return {
           borderColor: 'border-[#EB0028]',
           bgGradient: 'from-[#EB0028]/10 to-[#EB0028]/5',
           accentColor: 'text-[#EB0028]',
           icon: <Users className="w-6 h-6 text-[#EB0028]" />
         };
-      case 'Director':
+      case "Director":
         return {
           borderColor: 'border-[#EB0028]',
           bgGradient: 'from-[#EB0028]/10 to-[#EB0028]/5',
@@ -100,23 +104,31 @@ const TeamPage: React.FC = () => {
         };
       default:
         return {
-          borderColor: 'border-gray-600',
-          bgGradient: 'from-gray-600/10 to-gray-800/5',
-          accentColor: 'text-gray-400',
-          icon: <UserCog className="w-6 h-6" />
+          borderColor: "border-gray-600",
+          bgGradient: "from-gray-600/10 to-gray-800/5",
+          accentColor: "text-gray-400",
+          icon: <UserCog className="w-6 h-6" />,
         };
     }
   };
 
-  const renderTeamSection = (title: string, members: TeamMember[], trackNumber: string, type: string) => (
-    <section className="mb-20" aria-labelledby={`${title.toLowerCase().replace(/\s+/g, '-')}`}>
+  const renderTeamSection = (
+    title: string,
+    members: TeamMember[],
+    trackNumber: string,
+    type: string
+  ) => (
+    <section
+      className="mb-20"
+      aria-labelledby={`${title.toLowerCase().replace(/\s+/g, "-")}`}
+    >
       <div className="flex items-center justify-between mb-10">
         <div>
           <p className={`${sharedStyles.typography.trackLabel} mb-2`}>
             {trackNumber}
           </p>
           <h2
-            id={`${title.toLowerCase().replace(/\s+/g, '-')}`}
+            id={`${title.toLowerCase().replace(/\s+/g, "-")}`}
             className={`${sharedStyles.typography.sectionTitle} flex items-center gap-3`}
           >
             <span className="text-2xl">{getTeamTypeStyles(type).icon}</span>
@@ -135,14 +147,17 @@ const TeamPage: React.FC = () => {
               data-aos-delay={index * 100}
               className={`bg-card border border-border rounded-lg overflow-hidden flex flex-col h-full shadow-lg hover:shadow-2xl bg-gradient-to-br ${typeStyles.bgGradient} ${typeStyles.borderColor} border-2 hover:border-opacity-80 transition-all duration-300 group`}
             >
-              <div className={`${sharedStyles.card.imageContainer} relative overflow-hidden`}>
+              <div
+                className={`${sharedStyles.card.imageContainer} relative overflow-hidden`}
+              >
                 <img
                   src={member.photo_url}
                   alt={member.full_name}
                   className="w-full h-full object-cover transition-transform duration-300"
                   loading="lazy"
                   onError={(e) => {
-                    e.currentTarget.src = 'https://via.placeholder.com/400x500/e8e2dc/666666?text=No+Image';
+                    e.currentTarget.src =
+                      "https://via.placeholder.com/400x500/e8e2dc/666666?text=No+Image";
                   }}
                 />
                 <div
@@ -163,10 +178,14 @@ const TeamPage: React.FC = () => {
                 )}
               </div>
               <div className={`${sharedStyles.card.content} space-y-1`}>
-                <h3 className={`${sharedStyles.typography.cardTitle} flex items-center gap-2`}>
+                <h3
+                  className={`${sharedStyles.typography.cardTitle} flex items-center gap-2`}
+                >
                   <span>{member.full_name}</span>
                 </h3>
-                <p className={sharedStyles.typography.cardSubtitle}>{member.role}</p>
+                <p className={sharedStyles.typography.cardSubtitle}>
+                  {member.role}
+                </p>
                 {member.function_area && (
                   <p className={`${typeStyles.accentColor} font-medium`}>
                     {member.function_area}
@@ -189,16 +208,23 @@ const TeamPage: React.FC = () => {
         >
           <div>
             <h1 className={sharedStyles.typography.brandTitle}>
-              <span className={sharedStyles.colors.tedxRed}>TED<sup>x</sup></span>
+              <span className={sharedStyles.colors.tedxRed}>
+                TED<sup>x</sup>
+              </span>
               <span className="text-white"> UoK</span>
             </h1>
-            <h2 className={`${sharedStyles.typography.heroTitle} text-white mt-5`}>Team</h2>
+            <h2
+              className={`${sharedStyles.typography.heroTitle} text-white mt-5`}
+            >
+              Team
+            </h2>
             <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#EB0028] to-transparent"></div>
           </div>
 
           <div className={sharedStyles.layout.heroAside}>
             <p className={sharedStyles.typography.heroDescriptionDark}>
-              Meet the licensee, executive committee, and directors who shape TED<sup>x</sup> UoK.
+              Meet the licensee, executive committee, and directors who shape
+              TED<sup>x</sup> UoK.
             </p>
           </div>
         </div>
@@ -209,9 +235,17 @@ const TeamPage: React.FC = () => {
       {/* Team Sections */}
       <section className={sharedStyles.layout.contentSection}>
         <div className={sharedStyles.layout.pageStack}>
-          {licensees.length > 0 && renderTeamSection('Licensee', licensees, 'TEAM 01', 'Licensee')}
-          {executiveCommittee.length > 0 && renderTeamSection('Executive Committee', executiveCommittee, 'TEAM 02', 'EXCO')}
-          {directors.length > 0 && renderTeamSection('Directors', directors, 'TEAM 03', 'Director')}
+          {licensees.length > 0 &&
+            renderTeamSection("Licensee", licensees, "TEAM 01", "Licensee")}
+          {executiveCommittee.length > 0 &&
+            renderTeamSection(
+              "Executive Committee",
+              executiveCommittee,
+              "TEAM 02",
+              "EXCO"
+            )}
+          {directors.length > 0 &&
+            renderTeamSection("Directors", directors, "TEAM 03", "Director")}
         </div>
       </section>
     </main>

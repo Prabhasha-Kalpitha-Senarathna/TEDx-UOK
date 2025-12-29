@@ -1,19 +1,8 @@
-// src/pages/Legal/LicensingPage.tsx
-import { useEffect } from "react";
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 export default function LicensingPage() {
-  // SEO: Set page title and meta description
-  useEffect(() => {
-    document.title = "Licensing Statement - TEDx License | TEDxUOK";
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "TEDxUOK operates under an official TEDx license from TED Conferences LLC. Learn about our independent organization and content guidelines."
-      );
-    }
-  }, []);
+  useSEO(seoConfig.licensing);
 
   return (
     <main className="bg-black w-full">

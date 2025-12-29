@@ -22,24 +22,15 @@ type FAQGroup = {
   titleParts: { text: string; isRed: boolean }[];
 };
 
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
+
 export default function FAQPage() {
+  useSEO(seoConfig.faq);
   const [openId, setOpenId] = useState<string | null>(null);
   const [faqGroups, setFaqGroups] = useState<FAQGroup[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // SEO: Set page title and meta description
-  useEffect(() => {
-    document.title = "FAQ - Frequently Asked Questions | TEDxUOK";
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "Get answers to frequently asked questions about TEDxUOK including registration, tickets, event details, speakers, accessibility, and volunteering opportunities."
-      );
-    }
-  }, []);
 
   // Fetch FAQ data from Supabase
   useEffect(() => {

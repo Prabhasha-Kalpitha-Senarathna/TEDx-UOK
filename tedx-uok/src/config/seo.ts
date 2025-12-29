@@ -71,5 +71,9 @@ export const seoConfig = {
   blog: {
     title: "Blog - Stories & Insights | TEDxUOK",
     description: "Read stories, insights, and updates from TEDxUOK. Discover behind-the-scenes content and reflections on ideas worth spreading."
+  },
+  volunteerRegister: {
+    title: "Volunteer Application - Join Us | TEDxUOK",
+    description: "Apply to be a volunteer at TEDxUOK. Submit your application to join the team and make a difference at the University of Kelaniya."
   }
 };

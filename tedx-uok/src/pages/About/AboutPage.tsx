@@ -1,7 +1,11 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, Globe, Handshake, Lightbulb } from 'lucide-react';
+import { Link } from "react-router-dom";
+import { ArrowRight, Globe, Handshake, Lightbulb } from "lucide-react";
+
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 export default function AboutPage() {
+  useSEO(seoConfig.about);
   return (
     <div className="min-h-screen bg-background text-foreground pt-20">
       {/* Hero Section */}
@@ -26,9 +30,12 @@ export default function AboutPage() {
             <div className="mb-6">
               <span className="text-primary font-bold text-4xl sm:text-5xl">TED</span>
             </div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">About TED</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              About TED
+            </h2>
             <p className="text-muted-foreground mb-6">
-              Mission, history, and global initiatives of the world's leading ideas platform.
+              Mission, history, and global initiatives of the world's leading
+              ideas platform.
             </p>
             <div className="flex items-center text-foreground font-medium group-hover:text-primary transition-colors">
               Learn more
@@ -45,9 +52,12 @@ export default function AboutPage() {
               <span className="text-primary font-bold text-4xl sm:text-5xl">TED</span>
               <span className="text-primary font-bold text-4xl sm:text-5xl">x</span>
             </div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">About TEDx</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-4">
+              About TEDx
+            </h2>
             <p className="text-muted-foreground mb-6">
-              Learn about the TEDx program, licensing, and how it differs from TED conferences.
+              Learn about the TEDx program, licensing, and how it differs from
+              TED conferences.
             </p>
             <div className="flex items-center text-foreground font-medium group-hover:text-primary transition-colors">
               Learn more
@@ -65,7 +75,8 @@ export default function AboutPage() {
             <span className="text-foreground font-bold text-4xl sm:text-5xl">UOK</span>
             <h2 className="text-2xl font-bold text-foreground mb-4">About TED<sup className="text-[1.2em]">x</sup>UOK</h2>
             <p className="text-muted-foreground mb-6">
-              Our story, mission, and commitment to spreading ideas at University of Kelaniya.
+              Our story, mission, and commitment to spreading ideas at
+              University of Kelaniya.
             </p>
             <div className="flex items-center text-foreground font-medium group-hover:text-primary transition-colors">
               Learn more
@@ -82,22 +93,34 @@ export default function AboutPage() {
               <div className="w-16 h-16 mx-auto mb-4 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                 <Lightbulb className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Innovation</h3>
-              <p className="text-muted-foreground">Ideas drive progress and innovation</p>
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                Innovation
+              </h3>
+              <p className="text-muted-foreground">
+                Ideas drive progress and innovation
+              </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                 <Globe className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Global Impact</h3>
-              <p className="text-muted-foreground">Local ideas with worldwide influence</p>
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                Global Impact
+              </h3>
+              <p className="text-muted-foreground">
+                Local ideas with worldwide influence
+              </p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 mx-auto mb-4 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-sm">
                 <Handshake className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Community</h3>
-              <p className="text-muted-foreground">Building connections through shared ideas</p>
+              <h3 className="text-xl font-bold text-foreground mb-3">
+                Community
+              </h3>
+              <p className="text-muted-foreground">
+                Building connections through shared ideas
+              </p>
             </div>
           </div>
         </div>

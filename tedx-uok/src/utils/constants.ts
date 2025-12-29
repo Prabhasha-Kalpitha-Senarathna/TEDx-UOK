@@ -15,9 +15,10 @@ export const sharedStyles = {
 		cardSubtitle: 'text-sm sm:text-base text-white/80',
 		cardAccent: 'text-sm sm:text-base text-white/70',
 		trackLabel: 'text-xs uppercase text-white/60',
-		description: 'text-base sm:text-lg md:text-xl md:text-2xl text-white/80',
-		heroDescriptionDark: 'text-base sm:text-lg md:text-xl md:text-2xl text-white/50',
-	},
+		description: 'text-xl md:text-2xl text-white/80',
+		heroDescriptionLight: 'text-base md:text-lg text-white/80',
+		heroDescriptionDark: 'text-xl md:text-2xl text-white/50',
+	},	
 	// Colors
 	colors: {
 		tedxRed: 'text-[#EB0028]',

@@ -1,32 +1,36 @@
-import { Play, Users, Image as ImageIcon, Calendar } from 'lucide-react';
+import { Play, Users, Image as ImageIcon, Calendar } from "lucide-react";
+
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 export default function PastEventsPage() {
-    const pastEvents = [
-        {
-            year: "2023",
-            theme: "Uncharted Territories",
-            speakerCount: 8,
-            talksCount: 8,
-            hasGallery: true,
-            playlistUrl: "#"
-        },
-        {
-            year: "2022",
-            theme: "Beyond Barriers",
-            speakerCount: 6,
-            talksCount: 6,
-            hasGallery: true,
-            playlistUrl: "#"
-        },
-        {
-            year: "2021",
-            theme: "Resilience",
-            speakerCount: 5,
-            talksCount: 5,
-            hasGallery: false,
-            playlistUrl: "#"
-        }
-    ];
+  useSEO(seoConfig.pastEvents);
+  const pastEvents = [
+    {
+      year: "2023",
+      theme: "Uncharted Territories",
+      speakerCount: 8,
+      talksCount: 8,
+      hasGallery: true,
+      playlistUrl: "#",
+    },
+    {
+      year: "2022",
+      theme: "Beyond Barriers",
+      speakerCount: 6,
+      talksCount: 6,
+      hasGallery: true,
+      playlistUrl: "#",
+    },
+    {
+      year: "2021",
+      theme: "Resilience",
+      speakerCount: 5,
+      talksCount: 5,
+      hasGallery: false,
+      playlistUrl: "#",
+    },
+  ];
 
     return (
         <div className="min-h-screen bg-background text-foreground pt-20">
@@ -72,29 +76,32 @@ export default function PastEventsPage() {
                                         </div>
                                     </div>
 
-                                    {/* Gallery Placeholder */}
-                                    <div className="bg-background/50 rounded-lg p-6 flex items-center justify-center border border-border/50 min-h-[120px]">
-                                        {event.hasGallery ? (
-                                            <div className="flex items-center text-muted-foreground/50">
-                                                <ImageIcon className="w-8 h-8 mr-3" />
-                                                <span>Event Gallery Placeholder</span>
-                                            </div>
-                                        ) : (
-                                            <span className="text-muted-foreground/30 italic">No gallery available</span>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+                  {/* Gallery Placeholder */}
+                  <div className="bg-background/50 rounded-lg p-6 flex items-center justify-center border border-border/50 min-h-[120px]">
+                    {event.hasGallery ? (
+                      <div className="flex items-center text-muted-foreground/50">
+                        <ImageIcon className="w-8 h-8 mr-3" />
+                        <span>Event Gallery Placeholder</span>
+                      </div>
+                    ) : (
+                      <span className="text-muted-foreground/30 italic">
+                        No gallery available
+                      </span>
+                    )}
+                  </div>
                 </div>
-
-                <div className="mt-20 text-center border-t border-border pt-10">
-                    <p className="text-muted-foreground italic">
-                        * This archive is currently being updated. More events and details will be added soon.
-                    </p>
-                </div>
-            </section>
+              </div>
+            </div>
+          ))}
         </div>
-    );
+
+        <div className="mt-20 text-center border-t border-border pt-10">
+          <p className="text-muted-foreground italic">
+            * This archive is currently being updated. More events and details
+            will be added soon.
+          </p>
+        </div>
+      </section>
+    </div>
+  );
 }

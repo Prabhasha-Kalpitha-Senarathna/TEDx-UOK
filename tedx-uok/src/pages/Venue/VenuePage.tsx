@@ -25,7 +25,11 @@ interface Venue {
   google_maps_dir_url?: string;
 }
 
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
+
 const VenuePage: React.FC = () => {
+  useSEO(seoConfig.venue);
   const [venue, setVenue] = useState<Venue | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

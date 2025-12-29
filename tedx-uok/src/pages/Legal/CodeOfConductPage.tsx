@@ -1,19 +1,8 @@
-// src/pages/Legal/CodeOfConductPage.tsx
-import { useEffect } from "react";
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 export default function CodeOfConductPage() {
-  // SEO: Set page title and meta description
-  useEffect(() => {
-    document.title = "Code of Conduct - Event Guidelines | TEDxUOK";
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "TEDxUOK Code of Conduct: Join us in a spirit of curiosity, respect, and open-mindedness. Learn about expected behavior and our commitment to an inclusive event."
-      );
-    }
-  }, []);
+  useSEO(seoConfig.codeOfConduct);
 
   return (
     <main className="bg-black w-full">

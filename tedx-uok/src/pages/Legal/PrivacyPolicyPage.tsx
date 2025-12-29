@@ -1,19 +1,8 @@
-// src/pages/Legal/PrivacyPolicyPage.tsx
-import { useEffect } from "react";
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 export default function PrivacyPolicyPage() {
-  // SEO: Set page title and meta description
-  useEffect(() => {
-    document.title = "Privacy Policy - Data Protection | TEDxUOK";
-
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        "content",
-        "TEDxUOK Privacy Policy: Learn how we collect, use, and protect your personal information. Transparency in data handling and your privacy rights."
-      );
-    }
-  }, []);
+  useSEO(seoConfig.privacy);
 
   return (
     <main className="bg-black w-full">

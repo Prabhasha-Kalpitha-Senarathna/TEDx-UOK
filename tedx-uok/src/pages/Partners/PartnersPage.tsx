@@ -27,18 +27,20 @@ const PartnersPage: React.FC = () => {
 
     const fetchPartners = async () => {
       const { data, error } = await supabase
-        .from('partners')
-        .select('*')
-        .eq('is_active', true);
+        .from("partners")
+        .select("*")
+        .eq("is_active", true);
 
       if (error) {
-        console.error('Error fetching partners:', error);
+        console.error("Error fetching partners:", error);
       } else {
-        const partnerBucket = (import.meta.env.VITE_SUPABASE_BUCKET_PARTNER_LOGOS as string) || 'partner-logos';
+        const partnerBucket =
+          (import.meta.env.VITE_SUPABASE_BUCKET_PARTNER_LOGOS as string) ||
+          "partner-logos";
         const mappedPartners: Partner[] = (data || []).map((p: any) => ({
-          id: p.partner_id?.toString() || '',
-          name: p.name || '',
-          tier: (p.tier as Partner['tier']) || 'Bronze',
+          id: p.partner_id?.toString() || "",
+          name: p.name || "",
+          tier: (p.tier as Partner["tier"]) || "Bronze",
           logo_url: p.logo_url
             ? (String(p.logo_url).startsWith('http') || String(p.logo_url).startsWith('/')
               ? String(p.logo_url)
@@ -63,56 +65,56 @@ const PartnersPage: React.FC = () => {
   const activePartners = partners.filter((p) => p.isActive ?? true);
 
   const partnersByTier = {
-    Title: activePartners.filter((p) => p.tier === 'Title'),
-    Gold: activePartners.filter((p) => p.tier === 'Gold'),
-    Silver: activePartners.filter((p) => p.tier === 'Silver'),
-    Bronze: activePartners.filter((p) => p.tier === 'Bronze'),
-    'In-kind': activePartners.filter((p) => p.tier === 'In-kind'),
+    Title: activePartners.filter((p) => p.tier === "Title"),
+    Gold: activePartners.filter((p) => p.tier === "Gold"),
+    Silver: activePartners.filter((p) => p.tier === "Silver"),
+    Bronze: activePartners.filter((p) => p.tier === "Bronze"),
+    "In-kind": activePartners.filter((p) => p.tier === "In-kind"),
   };
 
   const getTierStyles = (tier: string) => {
     switch (tier) {
-      case 'Title':
+      case "Title":
         return {
-          borderColor: 'border-yellow-400',
-          bgGradient: 'from-yellow-400/10 to-yellow-600/5',
-          accentColor: 'text-yellow-400',
-          icon: <Crown className="w-6 h-6" />
+          borderColor: "border-yellow-400",
+          bgGradient: "from-yellow-400/10 to-yellow-600/5",
+          accentColor: "text-yellow-400",
+          icon: <Crown className="w-6 h-6" />,
         };
-      case 'Gold':
+      case "Gold":
         return {
-          borderColor: 'border-yellow-500',
-          bgGradient: 'from-yellow-500/10 to-yellow-700/5',
-          accentColor: 'text-yellow-500',
-          icon: <Medal className="w-6 h-6" />
+          borderColor: "border-yellow-500",
+          bgGradient: "from-yellow-500/10 to-yellow-700/5",
+          accentColor: "text-yellow-500",
+          icon: <Medal className="w-6 h-6" />,
         };
-      case 'Silver':
+      case "Silver":
         return {
-          borderColor: 'border-gray-400',
-          bgGradient: 'from-gray-400/10 to-gray-600/5',
-          accentColor: 'text-gray-400',
-          icon: <Medal className="w-6 h-6" />
+          borderColor: "border-gray-400",
+          bgGradient: "from-gray-400/10 to-gray-600/5",
+          accentColor: "text-gray-400",
+          icon: <Medal className="w-6 h-6" />,
         };
-      case 'Bronze':
+      case "Bronze":
         return {
-          borderColor: 'border-amber-600',
-          bgGradient: 'from-amber-600/10 to-amber-800/5',
-          accentColor: 'text-amber-600',
-          icon: <Medal className="w-6 h-6" />
+          borderColor: "border-amber-600",
+          bgGradient: "from-amber-600/10 to-amber-800/5",
+          accentColor: "text-amber-600",
+          icon: <Medal className="w-6 h-6" />,
         };
-      case 'In-kind':
+      case "In-kind":
         return {
-          borderColor: 'border-blue-400',
-          bgGradient: 'from-blue-400/10 to-blue-600/5',
-          accentColor: 'text-blue-400',
-          icon: <HandHeart className="w-6 h-6" />
+          borderColor: "border-blue-400",
+          bgGradient: "from-blue-400/10 to-blue-600/5",
+          accentColor: "text-blue-400",
+          icon: <HandHeart className="w-6 h-6" />,
         };
       default:
         return {
-          borderColor: 'border-gray-600',
-          bgGradient: 'from-gray-600/10 to-gray-800/5',
-          accentColor: 'text-gray-400',
-          icon: <Medal className="w-6 h-6" />
+          borderColor: "border-gray-600",
+          bgGradient: "from-gray-600/10 to-gray-800/5",
+          accentColor: "text-gray-400",
+          icon: <Medal className="w-6 h-6" />,
         };
     }
   };
@@ -128,15 +130,23 @@ const PartnersPage: React.FC = () => {
         aria-labelledby={`${tier.toLowerCase()}-partners`}
       >
         <div className="flex items-center justify-between mb-10">
-          <h2 id={`${tier.toLowerCase()}-partners`} className={`${sharedStyles.typography.sectionTitle} flex items-center gap-3`}>
+          <h2
+            id={`${tier.toLowerCase()}-partners`}
+            className={`${sharedStyles.typography.sectionTitle} flex items-center gap-3`}
+          >
             <span className="text-2xl">{tierStyles.icon}</span>
             {tier} Partners
           </h2>
         </div>
         <div className={sharedStyles.layout.partnerGrid}>
           {tierPartners.map((partner) => (
-            <div key={partner.id} className={`${sharedStyles.card.base} bg-gradient-to-br ${tierStyles.bgGradient} ${tierStyles.borderColor} border-2 hover:border-opacity-80 transition-all duration-300 group`}>
-              <div className={`${sharedStyles.partner.imageContainer} relative overflow-hidden`}>
+            <div
+              key={partner.id}
+              className={`${sharedStyles.card.base} bg-gradient-to-br ${tierStyles.bgGradient} ${tierStyles.borderColor} border-2 hover:border-opacity-80 transition-all duration-300 group`}
+            >
+              <div
+                className={`${sharedStyles.partner.imageContainer} relative overflow-hidden`}
+              >
                 <img
                   src={partner.logo_url}
                   alt={partner.name}
@@ -165,10 +175,14 @@ const PartnersPage: React.FC = () => {
                 )}
               </div>
               <div className={`${sharedStyles.card.content} space-y-1`}>
-                <h3 className={`${sharedStyles.typography.cardTitle} flex items-center gap-2`}>
+                <h3
+                  className={`${sharedStyles.typography.cardTitle} flex items-center gap-2`}
+                >
                   <span>{partner.name}</span>
                 </h3>
-                <p className={`${tierStyles.accentColor} mt-1 font-medium`}>{tier} Partner</p>
+                <p className={`${tierStyles.accentColor} mt-1 font-medium`}>
+                  {tier} Partner
+                </p>
               </div>
             </div>
           ))}
@@ -182,13 +196,21 @@ const PartnersPage: React.FC = () => {
       {/* Hero */}
 
       <section className={sharedStyles.layout.heroSection}>
-        <div className={`${sharedStyles.layout.heroContainer} ${sharedStyles.layout.heroFlex}`}>
+        <div
+          className={`${sharedStyles.layout.heroContainer} ${sharedStyles.layout.heroFlex}`}
+        >
           <div>
             <h1 className={sharedStyles.typography.brandTitle}>
-              <span className={sharedStyles.colors.tedxRed}>TED<sup>x</sup></span>
+              <span className={sharedStyles.colors.tedxRed}>
+                TED<sup>x</sup>
+              </span>
               <span className={sharedStyles.colors.white}> UoK</span>
             </h1>
-            <h2 className={`${sharedStyles.typography.heroTitle} ${sharedStyles.colors.white} mt-5`}>Partners</h2>
+            <h2
+              className={`${sharedStyles.typography.heroTitle} ${sharedStyles.colors.white} mt-5`}
+            >
+              Partners
+            </h2>
             <div className="mt-6 w-24 h-1 bg-gradient-to-r from-[#EB0028] to-transparent"></div>
           </div>
 
@@ -216,7 +238,9 @@ const PartnersPage: React.FC = () => {
       {/* CTA */}
       <section className="relative py-20 px-6 overflow-hidden bg-gradient-to-br from-gray-100 via-white to-gray-50">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(235,0,40,0.05),transparent_70%)]"></div>
-        <div className={`${sharedStyles.layout.pageContainer} text-center relative z-10`}>
+        <div
+          className={`${sharedStyles.layout.pageContainer} text-center relative z-10`}
+        >
           <div className="inline-flex items-center gap-2 bg-[#EB0028]/10 text-[#EB0028] px-4 py-2 rounded-full text-sm font-medium mb-6">
             <span className="w-2 h-2 bg-[#EB0028] rounded-full animate-pulse"></span>
             More partners to be announced

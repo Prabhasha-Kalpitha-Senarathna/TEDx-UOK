@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { FormInput } from '../../components/forms/FormInput';
-import { FormSelect } from '../../components/forms/FormSelect';
-import { SubmitButton } from '../../components/forms/SubmitButton';
-import { FormMessage } from '../../components/forms/FormMessage';
-import { supabase } from '../../lib/supabase';
+import React, { useState, useEffect } from "react";
+import { FormInput } from "../../components/forms/FormInput";
+import { FormSelect } from "../../components/forms/FormSelect";
+import { SubmitButton } from "../../components/forms/SubmitButton";
+import { FormMessage } from "../../components/forms/FormMessage";
+import { supabase } from "../../lib/supabase";
 
 interface RegistrationFormData {
   full_name: string;
@@ -65,23 +65,23 @@ export const RegistrationPage: React.FC = () => {
     const fetchEvents = async () => {
       try {
         const { data, error } = await supabase
-          .from('events')
-          .select('event_id, name, date, is_active')
-          .eq('is_active', true)
-          .order('date', { ascending: true });
+          .from("events")
+          .select("event_id, name, date, is_active")
+          .eq("is_active", true)
+          .order("date", { ascending: true });
 
         if (error) {
-          console.error('Error fetching events:', error);
+          console.error("Error fetching events:", error);
           return;
         }
 
         setEvents(data || []);
         // Auto-select first event if available
         if (data && data.length > 0) {
-          setFormData(prev => ({ ...prev, event_id: data[0].event_id }));
+          setFormData((prev) => ({ ...prev, event_id: data[0].event_id }));
         }
       } catch (error) {
-        console.error('Error fetching events:', error);
+        console.error("Error fetching events:", error);
       } finally {
         setLoadingEvents(false);
       }
@@ -148,7 +148,7 @@ export const RegistrationPage: React.FC = () => {
   const handleChange = (name: string, value: string) => {
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'event_id' ? parseInt(value, 10) : value,
+      [name]: name === "event_id" ? parseInt(value, 10) : value,
     }));
 
     // Clear error for this field when user types
@@ -177,7 +177,7 @@ export const RegistrationPage: React.FC = () => {
     try {
       // Insert registration data into Supabase
       const { data, error } = await supabase
-        .from('registrations')
+        .from("registrations")
         .insert([
           {
             event_id: formData.event_id,
@@ -185,13 +185,13 @@ export const RegistrationPage: React.FC = () => {
             email: formData.email,
             phone: formData.phone,
             ticket_type: formData.ticket_type,
-            status: 'Pending',
+            status: "Pending",
           },
         ])
         .select();
 
       if (error) {
-        console.error('Supabase error:', error);
+        console.error("Supabase error:", error);
         setSubmitMessage({
           type: "error",
           text: error.message || "Failed to register. Please try again.",
@@ -216,7 +216,7 @@ export const RegistrationPage: React.FC = () => {
       });
       setErrors({});
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error("Registration error:", error);
       setSubmitMessage({
         type: "error",
         text: "Something went wrong. Please try again.",
