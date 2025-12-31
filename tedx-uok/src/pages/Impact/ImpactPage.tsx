@@ -311,7 +311,9 @@ const ImpactPage = () => {
                     className="w-10 h-10 text-gray-500 group-hover:text-[#EB0028] transition-colors duration-500"
                   />
                 </div>
-            </Section>
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 
@@ -344,7 +346,7 @@ const ImpactPage = () => {
       </Section>
 
       <Footer />
-    </div>
+</div>
   );
 };
 

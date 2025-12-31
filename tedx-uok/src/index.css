@@ -122,16 +122,12 @@
     --ring: 348 100% 46%;
   }
 
-  * {
-    @apply border-border;
-  }
 
   html {
     scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
     background-color: black;
     /* Hard fallback */
     font-family: "HelveticaNeue", system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -252,9 +248,9 @@
     transform: translateY(8px);
   }
 
-    .animation-delay-500 {
-      animation-delay: 500ms;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -317,8 +313,7 @@
     animation-delay: 400ms;
   }
 
-    .animation-delay-500 {
-      animation-delay: 500ms;
-    }
+  .animation-delay-500 {
+    animation-delay: 500ms;
   }
 }
