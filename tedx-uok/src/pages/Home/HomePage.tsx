@@ -1,5 +1,4 @@
-import { useSEO } from "../../hooks/useSEO";
-import { seoConfig } from "../../config/seo";
+import { supabase } from "../../api/supabaseClient";
 
 // Import ALL Hooks
 import { useEvents } from "../../hooks/useEvents";
@@ -66,8 +65,14 @@ const HomePage = () => {
     logo: getImageUrl(p.logo_url, PARTNER_BUCKET),
   }));
 
-  // SEO: Set page title and meta description
-  useSEO(seoConfig.home);
+  const eventName = event?.name || "TEDxUOK 2026";
+  const eventDate = event?.date || null;
+
+  const eventVenue = event?.venues?.name || null;
+  const eventTheme = event?.theme || null;
+  const eventDesc = event?.description || null;
+  const ctaLabel = settings?.primary_cta_label;
+  const ctaLink = settings?.primary_cta_url;
 
   return (
     <>
