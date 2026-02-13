@@ -10,6 +10,8 @@ interface RegistrationFormData {
   full_name: string;
   email: string;
   phone: string;
+  address: string;
+  city: string;
   ticket_type: string;
   event_id: string;
 }
@@ -18,6 +20,8 @@ interface FormErrors {
   full_name?: string;
   email?: string;
   phone?: string;
+  address?: string;
+  city?: string;
   ticket_type?: string;
 }
 

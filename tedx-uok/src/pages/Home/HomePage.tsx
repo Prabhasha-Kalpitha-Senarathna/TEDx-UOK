@@ -7,7 +7,6 @@ import { usePartners } from "../../hooks/usePartners";
 import { useSettings } from "../../hooks/useSettings";
 
 // Import Components
-import SEO from "../../components/home/SEO";
 import About from "../../components/home/About";
 import Countdown from "../../components/home/Countdown";
 import CTASection from "../../components/home/CTASection";
@@ -65,7 +64,6 @@ const HomePage = () => {
     logo: getImageUrl(p.logo_url, PARTNER_BUCKET),
   }));
 
-  const eventName = event?.name || "TEDxUOK 2026";
   const eventDate = event?.date || null;
 
   const eventVenue = event?.venues?.name || null;
@@ -76,10 +74,6 @@ const HomePage = () => {
 
   return (
     <>
-      <SEO
-        eventName={eventName}
-        description={`Join us at ${eventName}: ${eventTheme}. ${eventDesc}`}
-      />
       <div className="min-h-screen bg-background relative top-[-65px]">
         <Hero
           date={eventDate}

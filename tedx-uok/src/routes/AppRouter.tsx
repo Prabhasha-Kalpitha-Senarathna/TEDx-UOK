@@ -7,17 +7,11 @@ import AboutPage from "../pages/About/AboutPage";
 import AboutTedPage from "../pages/About/AboutTedPage";
 import AboutTedxPage from "../pages/About/AboutTedxPage";
 import AboutTedxUokPage from "../pages/About/AboutTedxUokPage";
-// import SpeakersListPage from "../pages/Speakers/SpeakersListPage";
-// import SpeakerDetailPage from "../pages/Speakers/SpeakerDetailPage";
 import TeamPage from "../pages/Team/TeamPage";
 import PartnersPage from "../pages/Partners/PartnersPage";
 import ContactPage from "../pages/Contact/ContactPage";
 import RegistrationPage from "../pages/Registration/RegistrationPage";
-// import AgendaPage from "../pages/Agenda/AgendaPage";
 import ThemePage from "../pages/Theme/Theme";
-// import BlogListPage from "../pages/Blog/BlogListPage";
-// import BlogPostPage from "../pages/Blog/BlogPostPage";
-// import BlogDetailPage from "../pages/Blog/BlogDetailPage";
 import ImpactPage from "../pages/Impact/ImpactPage";
 import MediaPage from "../pages/PressAndMedia/PressAndMediaPage";
 import PastEventsPage from "../pages/PastEvents/PastEventsPage";
@@ -32,6 +26,7 @@ import LicensingPage from "../pages/Legal/LicensingPage";
 import PaymentSuccessPage from "../pages/Payment/PaymentSuccessPage";
 import PaymentFailPage from "../pages/Payment/PaymentFailPage";
 import PaymentCancelPage from "../pages/Payment/PaymentCancelPage";
+import CommunityRegistrationPage from "../pages/Community/CommunityPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
 import ComingSoon from "../pages/ComingSoon/ComingSoon";
 
@@ -324,13 +319,7 @@ function AnimatedRoutes() {
           </div>
         }
       />
-
-
     </Routes>
-
-
-
-
   );
 }
 

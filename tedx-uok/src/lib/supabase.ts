@@ -8,10 +8,8 @@ const supabaseAnonKey = (import.meta.env
 
 // Validate කරන්න
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error('Supabase credentials missing in environment variables');
+  throw new Error("Supabase credentials missing in environment variables");
 }
 
 // Single instance එකක් export කරන්න
-export const supabase = supabaseUrl && supabaseAnonKey
-  ? createClient(supabaseUrl, supabaseAnonKey)
-  : null;
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
