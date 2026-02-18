@@ -17,18 +17,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: tedx-uok/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd tedx-uok
-          npm ci
+        working-directory: tedx-uok
+        run: npm install
 
       - name: Build application
-        run: |
-          cd tedx-uok
-          npm run build
+        working-directory: tedx-uok
+        run: npm run build
 
       - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
