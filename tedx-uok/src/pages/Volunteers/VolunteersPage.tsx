@@ -1,9 +1,7 @@
 import React from "react";
 import { supabase } from "../../lib/supabase";
-// import { Database } from "../../types/database";
 
-// Temporary fallback due to type definition issues
-type TableInsert<T> = any;
+type TableInsert<_T extends string> = Record<string, unknown>;
 
 interface FormData {
   full_name: string;

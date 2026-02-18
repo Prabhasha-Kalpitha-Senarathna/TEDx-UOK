@@ -32,32 +32,7 @@ interface Event {
   is_active: boolean;
 }
 
-// PayHere Redirect Helper
-// PayHere Redirect Helper
-const redirectToPayHere = (payload: any) => {
-  console.log("Starting PayHere Redirect with Payload:", payload);
-
-  const form = document.createElement("form");
-  form.setAttribute("method", "POST");
-  form.setAttribute("action", "https://sandbox.payhere.lk/pay/checkout");
-  form.setAttribute("style", "display: none;");
-
-  Object.keys(payload).forEach(key => {
-    const input = document.createElement("input");
-    input.setAttribute("type", "hidden");
-    input.setAttribute("name", key);
-    input.setAttribute("value", payload[key]);
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
-};
-
-
-
 export const RegistrationPage: React.FC = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<RegistrationFormData>({
     full_name: '',
     email: '',
@@ -122,10 +97,10 @@ export const RegistrationPage: React.FC = () => {
   }, []);
 
   const ticketOptions = [
-    { value: "Student", label: "Student - LKR 500" },
-    { value: "Non-student", label: "Non-student - LKR 1,000" },
-    { value: "VIP", label: "VIP - LKR 2,500" },
-    { value: "Complimentary", label: "Complimentary - Free" },
+    { value: "student", label: "Student - LKR 500" },
+    { value: "non_student", label: "Non-student - LKR 1,000" },
+    { value: "vip", label: "VIP - LKR 2,500" },
+    { value: "complimentary", label: "Complimentary - Free" },
   ];
 
   const validateEmail = (email: string): boolean => {
@@ -161,6 +136,10 @@ export const RegistrationPage: React.FC = () => {
     } else if (!validatePhone(formData.phone)) {
       newErrors.phone = 'Please enter a valid phone number';
     }
+
+    
+
+    
 
     // Validate address
     if (!formData.address.trim()) {
@@ -225,6 +204,8 @@ export const RegistrationPage: React.FC = () => {
             full_name: formData.full_name,
             email: formData.email,
             phone: formData.phone,
+            address: formData.address,
+            city: formData.city,
             ticket_type: formData.ticket_type,
             status: "Pending",
           },
@@ -252,6 +233,8 @@ export const RegistrationPage: React.FC = () => {
         full_name: '',
         email: '',
         phone: '',
+        address: '',
+        city: '',
         ticket_type: '',
         event_id: events.length > 0 ? events[0].event_id : 0,
       });
@@ -420,6 +403,28 @@ export const RegistrationPage: React.FC = () => {
                 onChange={handleChange}
                 placeholder="+94 XX XXX XXXX"
                 error={errors.phone}
+                required
+              />
+
+              <FormInput
+                label="Address"
+                name="address"
+                type="text"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Enter your address"
+                error={errors.address}
+                required
+              />
+
+              <FormInput
+                label="City"
+                name="city"
+                type="text"
+                value={formData.city}
+                onChange={handleChange}
+                placeholder="Enter your city"
+                error={errors.city}
                 required
               />
 

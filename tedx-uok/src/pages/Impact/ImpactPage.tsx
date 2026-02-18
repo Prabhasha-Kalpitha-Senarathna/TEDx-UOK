@@ -14,10 +14,7 @@ import {
   Bus,
   Globe,
   Utensils,
-  type LucideIcon,
 } from "lucide-react";
-
-import Navbar from "../../components/layout/Navbar";
 import Footer from "../../components/layout/Footer";
 
 // Local Temporary Components
@@ -48,8 +45,8 @@ const PageHero = ({
   );
 };
 
-// CountUp Component for Stats
-const CountUp = ({
+// CountUp Component for Stats (unused)
+/* const CountUp = ({
   end,
   duration = 2000,
 }: {
@@ -89,7 +86,7 @@ const CountUp = ({
   }, [end, duration]);
 
   return <span ref={nodeRef}>{count}</span>;
-};
+}; */
 
 import { useSEO } from "../../hooks/useSEO";
 import { seoConfig } from "../../config/seo";
@@ -346,7 +343,7 @@ const ImpactPage = () => {
       </Section>
 
       <Footer />
-</div>
+    </div>
   );
 };
 
