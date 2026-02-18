@@ -40,7 +40,7 @@ const Theme = () => {
   }
 
   const realSpeakers = speakers.map((s) => ({
-    id: s.id,
+    id: s.speaker_id,
     name: s.full_name,
     topic: s.talk_title || "Topic To Be Announced",
     alignment: s.bio_short || s.title,

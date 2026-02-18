@@ -1,6 +1,7 @@
 interface PageHeroProps {
   title: string;
   subtitle?: string;
+  description?: string;
   backgroundImage?: string;
 }
 

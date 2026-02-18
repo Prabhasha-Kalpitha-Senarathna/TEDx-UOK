@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
-import { Speaker } from "../types/models";
+import type { Speaker } from "../types/models";
 
 export const useSpeakers = (limit?: number) => {
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
