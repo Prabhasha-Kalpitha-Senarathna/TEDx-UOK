@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { FormInput } from "../../components/forms/FormInput";
 import { FormSelect } from "../../components/forms/FormSelect";
 import { SubmitButton } from "../../components/forms/SubmitButton";
@@ -33,32 +32,7 @@ interface Event {
   is_active: boolean;
 }
 
-// PayHere Redirect Helper (unused - kept for future implementation)
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _redirectToPayHere = (payload: any) => {
-  console.log("Starting PayHere Redirect with Payload:", payload);
-
-  const form = document.createElement("form");
-  form.setAttribute("method", "POST");
-  form.setAttribute("action", "https://sandbox.payhere.lk/pay/checkout");
-  form.setAttribute("style", "display: none;");
-
-  Object.keys(payload).forEach(key => {
-    const input = document.createElement("input");
-    input.setAttribute("type", "hidden");
-    input.setAttribute("name", key);
-    input.setAttribute("value", payload[key]);
-    form.appendChild(input);
-  });
-
-  document.body.appendChild(form);
-  form.submit();
-};
-
-
-
 export const RegistrationPage: React.FC = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState<RegistrationFormData>({
     full_name: '',
     email: '',
