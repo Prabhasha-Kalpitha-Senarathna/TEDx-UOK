@@ -98,7 +98,7 @@ export function Speakers() {
 
         {/* Speaker Cards Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <AnimatePresence mode='popLayout'>
+          <AnimatePresence mode="popLayout">
             {displayedSpeakers.map((speaker, index) => (
               <motion.div
                 key={speaker.speaker_id}
