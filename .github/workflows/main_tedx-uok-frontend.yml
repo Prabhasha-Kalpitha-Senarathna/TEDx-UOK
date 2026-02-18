@@ -30,6 +30,11 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Prepare deployment package
+        run: |
+          cp tedx-uok/server.js tedx-uok/dist/server.js
+          cp tedx-uok/server-package.json tedx-uok/dist/package.json
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -48,6 +53,9 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: node-app
+
+      - name: Install production dependencies
+        run: npm install --omit=dev
       
       - name: Login to Azure
         uses: azure/login@v2
