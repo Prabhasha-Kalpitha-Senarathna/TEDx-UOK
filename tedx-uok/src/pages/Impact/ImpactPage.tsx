@@ -15,6 +15,7 @@ import {
   Globe,
   Utensils,
 } from "lucide-react";
+import Footer from "../../components/layout/Footer";
 
 // Local Temporary Components
 const PageHero = ({
@@ -342,7 +343,7 @@ const ImpactPage = () => {
       </Section>
 
       <Footer />
-</div>
+    </div>
   );
 };
 

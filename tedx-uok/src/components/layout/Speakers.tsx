@@ -162,7 +162,7 @@ export function Speakers() {
                       </div>
                     </div>
 
-                    {/* Glow Effect on Hover */
+                    {/* Glow Effect on Hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-[#EB0028]/0 to-[#EB0028]/0 group-hover:from-[#EB0028]/10 group-hover:to-transparent transition-all pointer-events-none"></div>
                   </motion.div>
                 </Link>
