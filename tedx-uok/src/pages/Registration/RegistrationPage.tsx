@@ -9,6 +9,8 @@ interface RegistrationFormData {
   full_name: string;
   email: string;
   phone: string;
+  address: string;
+  city: string;
   ticket_type: string;
   event_id: number;
 }
@@ -17,6 +19,8 @@ interface FormErrors {
   full_name?: string;
   email?: string;
   phone?: string;
+  address?: string;
+  city?: string;
   ticket_type?: string;
   event_id?: string;
 }
@@ -33,6 +37,8 @@ export const RegistrationPage: React.FC = () => {
     full_name: '',
     email: '',
     phone: '',
+    address: '',
+    city: '',
     ticket_type: '',
     event_id: 0, // Hidden field - default event ID
   });
@@ -135,6 +141,16 @@ export const RegistrationPage: React.FC = () => {
 
     
 
+    // Validate address
+    if (!formData.address.trim()) {
+      newErrors.address = 'Address is required';
+    }
+
+    // Validate city
+    if (!formData.city.trim()) {
+      newErrors.city = 'City is required';
+    }
+
     // Validate ticket_type
     if (!formData.ticket_type) {
       newErrors.ticket_type = "Please select a ticket type";
@@ -188,6 +204,8 @@ export const RegistrationPage: React.FC = () => {
             full_name: formData.full_name,
             email: formData.email,
             phone: formData.phone,
+            address: formData.address,
+            city: formData.city,
             ticket_type: formData.ticket_type,
             status: "Pending",
           },
@@ -215,6 +233,8 @@ export const RegistrationPage: React.FC = () => {
         full_name: '',
         email: '',
         phone: '',
+        address: '',
+        city: '',
         ticket_type: '',
         event_id: events.length > 0 ? events[0].event_id : 0,
       });
@@ -383,6 +403,28 @@ export const RegistrationPage: React.FC = () => {
                 onChange={handleChange}
                 placeholder="+94 XX XXX XXXX"
                 error={errors.phone}
+                required
+              />
+
+              <FormInput
+                label="Address"
+                name="address"
+                type="text"
+                value={formData.address}
+                onChange={handleChange}
+                placeholder="Enter your address"
+                error={errors.address}
+                required
+              />
+
+              <FormInput
+                label="City"
+                name="city"
+                type="text"
+                value={formData.city}
+                onChange={handleChange}
+                placeholder="Enter your city"
+                error={errors.city}
                 required
               />
 
