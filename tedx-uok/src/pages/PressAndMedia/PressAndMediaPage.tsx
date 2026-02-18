@@ -11,7 +11,6 @@ import {
 } from "lucide-react";
 
 import { useSEO } from "../../hooks/useSEO";
-import { seoConfig } from "../../config/seo";
 
 const PressMedia = () => {
   useSEO({

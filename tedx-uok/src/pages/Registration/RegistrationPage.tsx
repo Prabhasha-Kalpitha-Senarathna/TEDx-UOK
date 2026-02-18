@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { FormInput } from "../../components/forms/FormInput";
 import { FormSelect } from "../../components/forms/FormSelect";
 import { SubmitButton } from "../../components/forms/SubmitButton";
@@ -32,9 +33,9 @@ interface Event {
   is_active: boolean;
 }
 
-// PayHere Redirect Helper
-// PayHere Redirect Helper
-const redirectToPayHere = (payload: any) => {
+// PayHere Redirect Helper (unused - kept for future implementation)
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _redirectToPayHere = (payload: any) => {
   console.log("Starting PayHere Redirect with Payload:", payload);
 
   const form = document.createElement("form");
@@ -252,6 +253,8 @@ export const RegistrationPage: React.FC = () => {
         full_name: '',
         email: '',
         phone: '',
+        address: '',
+        city: '',
         ticket_type: '',
         event_id: events.length > 0 ? events[0].event_id : 0,
       });

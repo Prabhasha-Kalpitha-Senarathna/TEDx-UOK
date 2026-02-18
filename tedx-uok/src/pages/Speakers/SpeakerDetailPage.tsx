@@ -1,5 +1,5 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Linkedin, Twitter, Globe, Calendar, Clock, MapPin } from 'lucide-react';
 import { useSpeaker } from '../../hooks/useSpeakers';
 
@@ -92,7 +92,7 @@ export function SpeakerDetailPage() {
                 transition={{ delay: 0.4 }}
                 className="mt-8 flex gap-4"
               >
-                {speaker.social_links.linkedin && (
+                {speaker.social_links?.linkedin && (
                   <motion.a
                     href={speaker.social_links.linkedin}
                     target="_blank"
@@ -103,7 +103,7 @@ export function SpeakerDetailPage() {
                     <Linkedin size={20} className="text-white/60 group-hover:text-white transition-colors" />
                   </motion.a>
                 )}
-                {speaker.social_links.twitter && (
+                {speaker.social_links?.twitter && (
                   <motion.a
                     href={speaker.social_links.twitter}
                     target="_blank"
@@ -114,7 +114,7 @@ export function SpeakerDetailPage() {
                     <Twitter size={20} className="text-white/60 group-hover:text-white transition-colors" />
                   </motion.a>
                 )}
-                {speaker.social_links.website && (
+                {speaker.social_links?.website && (
                   <motion.a
                     href={speaker.social_links.website}
                     target="_blank"

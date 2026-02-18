@@ -49,7 +49,6 @@ const Theme = () => {
 
   const themeName = event?.theme || "Breaking Boundaries";
   const themeParts = themeName.split(" ");
-  const firstPart = themeParts[0];
   const secondPart = themeParts.slice(1).join(" ");
 
   return (

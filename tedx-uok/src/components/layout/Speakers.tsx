@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Search } from 'lucide-react';
@@ -17,7 +17,7 @@ export function Speakers() {
         speaker.full_name.toLowerCase().includes(query) ||
         speaker.title.toLowerCase().includes(query) ||
         speaker.talk_title.toLowerCase().includes(query) ||
-        (speaker.expertise || []).some(tag => tag.toLowerCase().includes(query))
+        (speaker.expertise || []).some((tag: string) => tag.toLowerCase().includes(query))
       );
     });
   }, [speakers, searchQuery]);
@@ -150,7 +150,7 @@ export function Speakers() {
 
                       {/* Expertise Tags */}
                       <div className="flex flex-wrap gap-2 pt-2">
-                        {(speaker.expertise || []).slice(0, 2).map((tag, i) => (
+                        {(speaker.expertise || []).slice(0, 2).map((tag: string, i: number) => (
                           <span
                             key={i}
                             className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-white/50 text-[10px]"
@@ -162,7 +162,7 @@ export function Speakers() {
                       </div>
                     </div>
 
-                    {/* Glow Effect on Hover */}
+                    {/* Glow Effect on Hover */
                     <div className="absolute inset-0 bg-gradient-to-t from-[#EB0028]/0 to-[#EB0028]/0 group-hover:from-[#EB0028]/10 group-hover:to-transparent transition-all pointer-events-none"></div>
                   </motion.div>
                 </Link>

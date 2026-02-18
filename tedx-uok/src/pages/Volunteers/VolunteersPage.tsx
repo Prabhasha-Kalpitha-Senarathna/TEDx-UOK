@@ -2,9 +2,6 @@ import React from "react";
 import { supabase } from "../../lib/supabase";
 // import { Database } from "../../types/database";
 
-// Temporary fallback due to type definition issues
-type TableInsert<T> = any;
-
 interface FormData {
   full_name: string;
   email: string;
