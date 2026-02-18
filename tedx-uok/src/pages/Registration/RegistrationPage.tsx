@@ -97,10 +97,10 @@ export const RegistrationPage: React.FC = () => {
   }, []);
 
   const ticketOptions = [
-    { value: "Student", label: "Student - LKR 500" },
-    { value: "Non-student", label: "Non-student - LKR 1,000" },
-    { value: "VIP", label: "VIP - LKR 2,500" },
-    { value: "Complimentary", label: "Complimentary - Free" },
+    { value: "student", label: "Student - LKR 500" },
+    { value: "non_student", label: "Non-student - LKR 1,000" },
+    { value: "vip", label: "VIP - LKR 2,500" },
+    { value: "complimentary", label: "Complimentary - Free" },
   ];
 
   const validateEmail = (email: string): boolean => {
