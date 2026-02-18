@@ -9,8 +9,6 @@ interface RegistrationFormData {
   full_name: string;
   email: string;
   phone: string;
-  address: string;
-  city: string;
   ticket_type: string;
   event_id: number;
 }
@@ -19,8 +17,6 @@ interface FormErrors {
   full_name?: string;
   email?: string;
   phone?: string;
-  address?: string;
-  city?: string;
   ticket_type?: string;
   event_id?: string;
 }
@@ -37,8 +33,6 @@ export const RegistrationPage: React.FC = () => {
     full_name: '',
     email: '',
     phone: '',
-    address: '',
-    city: '',
     ticket_type: '',
     event_id: 0, // Hidden field - default event ID
   });
@@ -137,15 +131,9 @@ export const RegistrationPage: React.FC = () => {
       newErrors.phone = 'Please enter a valid phone number';
     }
 
-    // Validate address
-    if (!formData.address.trim()) {
-      newErrors.address = 'Address is required';
-    }
+    
 
-    // Validate city
-    if (!formData.city.trim()) {
-      newErrors.city = 'City is required';
-    }
+    
 
     // Validate ticket_type
     if (!formData.ticket_type) {
@@ -227,8 +215,6 @@ export const RegistrationPage: React.FC = () => {
         full_name: '',
         email: '',
         phone: '',
-        address: '',
-        city: '',
         ticket_type: '',
         event_id: events.length > 0 ? events[0].event_id : 0,
       });
