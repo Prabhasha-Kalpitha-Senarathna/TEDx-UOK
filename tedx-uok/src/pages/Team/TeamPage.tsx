@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import React, { useState, useEffect } from 'react';
 import { Linkedin, UserCheck, Users, UserCog } from 'lucide-react';
 import AOS from 'aos';
@@ -208,10 +209,10 @@ const TeamPage: React.FC = () => {
         >
           <div>
             <h1 className={sharedStyles.typography.brandTitle}>
-              <span className={sharedStyles.colors.tedxRed}>
-                TED<sup>x</sup>
-              </span>
-              <span className="font-normal  text-white"> U<span className="lowercase">o</span>K</span>
+
+                {formatTedxText("TEDx UoK", true)}
+
+
             </h1>
             <h2
               className={`${sharedStyles.typography.heroTitle} text-white mt-5`}
@@ -224,7 +225,7 @@ const TeamPage: React.FC = () => {
           <div className={sharedStyles.layout.heroAside}>
             <p className={sharedStyles.typography.heroDescriptionDark}>
               Meet the licensee, executive committee, and directors who shape
-              TED<sup>x</sup> UoK.
+              {formatTedxText("TEDx UoK")}.
             </p>
           </div>
         </div>

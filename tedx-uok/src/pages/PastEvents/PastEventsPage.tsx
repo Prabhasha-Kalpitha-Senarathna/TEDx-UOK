@@ -1,4 +1,5 @@
 import { Play, Users, Image as ImageIcon, Calendar } from "lucide-react";
+import { formatTedxText } from "../../utils/textFormatting";
 
 import { useSEO } from "../../hooks/useSEO";
 import { seoConfig } from "../../config/seo";
@@ -52,7 +53,7 @@ export default function PastEventsPage() {
                                             <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                                             {event.year}
                                         </div>
-                                        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Theme: {event.theme}</h2>
+                                        <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Theme: {formatTedxText(event.theme)}</h2>
                                     </div>
                                     <a
                                         href={event.playlistUrl}

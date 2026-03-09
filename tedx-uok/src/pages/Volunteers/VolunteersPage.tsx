@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import React from "react";
 import { supabase } from "../../lib/supabase";
 import { useSEO } from "../../hooks/useSEO";
@@ -437,7 +438,7 @@ const VolunteersPage: React.FC = () => {
               >
                 Volunteer Application for{" "}
                 <span style={{ color: "#EB0028" }}>
-                  TED<sup style={{ color: "#EB0028" }}>x</sup>
+                  {formatTedxText("TEDx")}
                 </span>{" "}
                 <span style={{ color: "#FFFFFF", fontWeight: "normal" }}>
                   UoK

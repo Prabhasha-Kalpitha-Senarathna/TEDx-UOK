@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import { useSEO } from "../../hooks/useSEO";
 import { seoConfig } from "../../config/seo";
 
@@ -18,9 +19,9 @@ export default function CodeOfConductPage() {
           {/* Content */}
           <div className="space-y-8 text-white leading-relaxed text-center">
             <p className="text-lg">
-              We invite you to join TEDx UOK in a spirit of curiosity,
+              We invite you to join {formatTedxText("TEDx UOK")} in a spirit of curiosity,
               friendliness, open-mindedness, and respect. We will not tolerate
-              harassment, in any form, at a TEDx UOK event.
+              harassment, in any form, at a {formatTedxText("TEDx UOK")} event.
             </p>
 
             {/* At TEDx UOK, You Agree To - Card Style */}
@@ -71,7 +72,7 @@ export default function CodeOfConductPage() {
               <h2 className="text-2xl font-semibold text-white !mb-6">
                 Unacceptable <span className="text-[#EB0028]">Behavior</span>
               </h2>
-              <p>These behaviors don't belong at TED<sup>x</sup> UoK:</p>
+              <p>These behaviors don't belong at {formatTedxText("TEDx UoK")}:</p>
               <div className="grid gap-4 md:grid-cols-2">
                 <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl p-5 hover:border-[#EB0028]/20 transition-all duration-300">
                   <p className="text-white text-left">
@@ -119,7 +120,7 @@ export default function CodeOfConductPage() {
               </h2>
               <p>
                 If you experience or witness behavior that violates this Code of
-                Conduct, please report it immediately to a TED<sup>x</sup> UoK organizer or
+                Conduct, please report it immediately to a {formatTedxText("TEDx UoK")} organizer or
                 email{" "}
                 <a
                   href="mailto:conduct@tedxuok.com"

@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import { motion } from 'framer-motion';
 import { useBlog } from '../../hooks/useBlog';
 import { BlogCard } from '../../components/blog/BlogCard';
@@ -25,7 +26,7 @@ export default function BlogListPage() {
         {/* Header - Minimal "r." style from inspiration, adapted to TEDx */}
         <div className="mb-16">
           <span className="font-bold text-2xl tracking-tighter">
-            <span style={{ color: '#EB0028' }}>TED<sup>x</sup></span><span className="text-white font-normal"> UoK</span>
+            <span style={{ color: '#EB0028' }}>{formatTedxText("TEDx")}</span><span className="text-white font-normal"> UoK</span>
           </span>
         </div>
 

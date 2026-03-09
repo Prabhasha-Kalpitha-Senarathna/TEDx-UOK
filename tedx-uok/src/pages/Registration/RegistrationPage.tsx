@@ -5,6 +5,7 @@ import { FormInput } from "../../components/forms/FormInput";
 import { FormSelect } from "../../components/forms/FormSelect";
 import { SubmitButton } from "../../components/forms/SubmitButton";
 import { FormMessage } from "../../components/forms/FormMessage";
+import { formatTedxText } from "../../utils/textFormatting";
 
 interface RegistrationFormData {
   full_name: string;
@@ -296,7 +297,7 @@ export const RegistrationPage: React.FC = () => {
             Event <span className="text-[#EB0028]">Registration</span>
           </h1>
           <p className="text-gray-400 text-lg">
-            Secure your spot at TEDx University of Kelaniya
+            Secure your spot at {formatTedxText("TEDx")} University of Kelaniya
           </p>
         </div>
 

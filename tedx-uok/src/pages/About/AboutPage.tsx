@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Globe, Handshake, Lightbulb } from "lucide-react";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase"; // මෙතැනින් import කරන්න
+import { formatTedxText } from "../../utils/textFormatting";
 
 export default function AboutPage() {
   const [theme, setTheme] = useState("Breaking Boundaries");
@@ -49,18 +50,18 @@ export default function AboutPage() {
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h1 className="text-6xl md:text-7xl font-bold mb-8">
-            <span className="text-foreground">About</span>
-            <span className="text-primary ml-4">
-              TED<sup>x</sup><span className="font-normal text-foreground">UoK</span>
+            <span className="text-foreground">About </span>
+            <span className="text-primary">
+              {formatTedxText("TEDx UoK")}
             </span>
           </h1>
 
           <div className="mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
+            <h2 className="text-4xl md:text-5xl font-extrabold text-primary mb-6">
               {loading ? (
                 <div className="h-12 w-64 bg-gray-200 rounded animate-pulse mx-auto"></div>
               ) : (
-                theme
+                formatTedxText(theme)
               )}
             </h2>
 
@@ -70,7 +71,7 @@ export default function AboutPage() {
               </div>
             ) : (
               <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
-                {description}
+                {formatTedxText(description)}
               </p>
             )}
           </div>
@@ -103,11 +104,11 @@ export default function AboutPage() {
           >
             <div className="mb-6">
               <span className="text-primary font-bold text-5xl">
-                TED<sup>x</sup>
+                {formatTedxText("TEDx")}
               </span>
             </div>
             <h2 className="text-2xl font-bold text-foreground mb-4">
-              About TED<sup>x</sup>
+              About {formatTedxText("TEDx")}
             </h2>
             <p className="text-muted-foreground mb-6">
               Learn about the TED
@@ -126,14 +127,14 @@ export default function AboutPage() {
           >
             <div className="mb-6 flex items-start">
               <span className="text-primary font-bold text-5xl">
-                TED<sup>x</sup>
+                {formatTedxText("TEDx")}
               </span>
-              <span className="text-foreground font-bold text-5xl ml-2">
-                UoK
+              <span className="text-foreground font-bold text-5xl">
+                 UoK
               </span>
             </div>
             <h2 className="text-2xl font-bold text-foreground mb-4">
-              About TED<sup>x</sup><span className="font-normal text-foreground"> UoK</span>
+              About {formatTedxText("TEDx UoK")}
             </h2>
             <p className="text-muted-foreground mb-6">
               Our story, mission, and commitment to spreading ideas at
@@ -192,11 +193,11 @@ export default function AboutPage() {
             <div className="flex items-center justify-between flex-wrap gap-4">
               <div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">
-                  TED<sup className="text-[0.6em] align-super">x</sup>UoK 2026
+                  {formatTedxText("TEDx UoK")} 2026
                   Theme
                 </h3>
                 <p className="text-muted-foreground">
-                  <span className="font-semibold text-primary">{theme}</span>
+                  <span className="font-semibold text-primary">{formatTedxText(theme)}</span>
                 </p>
               </div>
               <Link
@@ -221,7 +222,7 @@ export default function AboutPage() {
               to="/events"
               className="px-8 py-3 bg-[#EB0028] !text-white rounded-full font-bold hover:bg-red-700 transition-colors duration-300"
             >
-              View TED<sup>x</sup> Events
+              View {formatTedxText("TEDx")} Events
             </Link>
           </div>
         </div>

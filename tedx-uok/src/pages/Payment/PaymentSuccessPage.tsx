@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -84,7 +85,7 @@ export const PaymentSuccessPage: React.FC = () => {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 tracking-normal">
-            Your registration for <span className="text-[#EB0028]">TED<sup className="text-[#EB0028]">x</sup></span> <span className="text-white">UoK</span> has been confirmed.
+            Your registration for <span className="text-[#EB0028]">{formatTedxText("TEDx")}</span> <span className="text-white">UoK</span> has been confirmed.
           </p>
 
           <div className="bg-[#0E0E0E] border border-[#1F1F1F] rounded-xl p-6 sm:p-8 mb-8">

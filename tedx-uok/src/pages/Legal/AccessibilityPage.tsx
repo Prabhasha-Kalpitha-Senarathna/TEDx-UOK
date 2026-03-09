@@ -1,9 +1,10 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import { useSEO } from "../../hooks/useSEO";
 import { seoConfig } from "../../config/seo";
 
 const TedX = () => (
   <span>
-    TED<sup className="relative -top-1">x</sup> UoK
+    {formatTedxText("TEDx UoK")}
   </span>
 );
 

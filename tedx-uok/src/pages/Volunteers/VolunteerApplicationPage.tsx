@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -174,12 +175,12 @@ export const VolunteerApplicationPage: React.FC = () => {
     {
       title: (
         <>
-          TED<sup>x</sup> Experience
+          {formatTedxText("TEDx")} Experience
         </>
       ),
       description: (
         <>
-          Be part of a globally recognized event and the TED<sup>x</sup>{" "}
+          Be part of a globally recognized event and the {formatTedxText("TEDx")}{" "}
           community.
         </>
       ),
@@ -235,7 +236,7 @@ export const VolunteerApplicationPage: React.FC = () => {
       title: "Certificate",
       description: (
         <>
-          Receive an official TED<sup>x</sup> volunteer certificate upon
+          Receive an official {formatTedxText("TEDx")} volunteer certificate upon
           completion.
         </>
       ),
@@ -281,7 +282,7 @@ export const VolunteerApplicationPage: React.FC = () => {
       title: "Resume Builder",
       description: (
         <>
-          Add prestigious TED<sup>x</sup> experience to your professional
+          Add prestigious {formatTedxText("TEDx")} experience to your professional
           profile.
         </>
       ),
@@ -333,7 +334,7 @@ export const VolunteerApplicationPage: React.FC = () => {
               >
                 <span style={{ color: "#FFFFFF" }}>Volunteer with </span>
                 <span style={{ color: "#EB0028" }}>
-                  TED<sup style={{ color: "#EB0028" }}>x</sup>
+                  {formatTedxText("TEDx")}
                 </span>{" "}
                 <span style={{ fontWeight: "normal", color: "#FFFFFF" }}>UoK</span>
               </h1>

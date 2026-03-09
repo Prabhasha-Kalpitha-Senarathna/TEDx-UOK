@@ -2,6 +2,7 @@ import Loading from "../../components/ui/Loading";
 import { supabase } from "../../api/supabaseClient";
 import { useEvents } from "../../hooks/useEvents";
 import { useSpeakers } from "../../hooks/useSpeakers";
+import { formatTedxText } from "../../utils/textFormatting";
 
 const SPEAKER_BUCKET = import.meta.env.VITE_SUPABASE_BUCKET_SPEAKER_PHOTOS;
 
@@ -57,16 +58,16 @@ const Theme = () => {
       <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-6">
         <div className="container mx-auto">
           <p className="text-sm font-medium text-primary tracking-widest uppercase mb-4 opacity-0 animate-fade-in-up">
-            TEDxUOK 2026 Theme
+            {formatTedxText("TEDx UoK 2026 Theme", true)}
           </p>
-          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-8 opacity-0 animate-fade-in-up animation-delay-100">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-8 opacity-0 animate-fade-in-up animation-delay-100">
             <span className="text-foreground">Breaking</span>
             <br />
-            <span className="text-primary">{secondPart || "Boundaries"}</span>
+            <span className="text-primary">{formatTedxText(secondPart || "Boundaries")}</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl opacity-0 animate-fade-in-up animation-delay-200">
-            {event?.description ||
-              "Exploring the edges of possibility and the courage to venture beyond."}
+            {formatTedxText(event?.description ||
+              "Exploring the edges of possibility and the courage to venture beyond.")}
           </p>
         </div>
       </section>
@@ -85,7 +86,7 @@ const Theme = () => {
               push against the boundaries that define our world.
             </p>
             <p>
-              "{themeName}" emerges from a simple observation: the most profound
+              "{formatTedxText(themeName)}" emerges from a simple observation: the most profound
               changes happen at the edges where disciplines intersect, where
               comfort zones end, and where the familiar gives way to the
               unknown.
@@ -200,7 +201,7 @@ const Theme = () => {
             Speaker Alignment
           </h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-2xl">
-            See how our speakers interpret the theme "{themeName}".
+            See how our speakers interpret the theme "{formatTedxText(themeName)}".
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {realSpeakers.map((speaker) => (
@@ -220,7 +221,7 @@ const Theme = () => {
                   <p className="text-sm text-primary mb-2">{speaker.topic}</p>
                   <p className="text-muted-foreground text-sm leading-relaxed">
                     {/* Using Bio as fallback for Alignment text */}
-                    {speaker.alignment}
+                    {formatTedxText(speaker.alignment)}
                   </p>
                 </div>
               </div>

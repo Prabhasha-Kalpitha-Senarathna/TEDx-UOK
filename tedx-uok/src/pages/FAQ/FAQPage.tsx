@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 // src/pages/FAQ/FAQPage.tsx
 import { useState, useEffect } from "react";
 import { ChevronDown } from "lucide-react";
@@ -130,11 +131,11 @@ export default function FAQPage() {
       <section className="mx-auto max-w-6xl px-6 py-32 space-y-24">
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white">
             Frequently <span className="text-[#EB0028]">Asked Questions</span>
           </h1>
           <p className="mx-auto max-w-2xl text-white">
-            Answers to common questions about attending TED<sup>x</sup> UoK.
+            Answers to common questions about attending {formatTedxText("TEDx UoK")}.
           </p>
         </div>
 

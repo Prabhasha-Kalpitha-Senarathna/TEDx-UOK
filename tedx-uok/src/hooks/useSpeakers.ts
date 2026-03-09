@@ -25,7 +25,6 @@ export const useSpeakers = (limit?: number) => {
   const [speakers, setSpeakers] = useState<Speaker[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSpeakers = async () => {
@@ -64,7 +63,6 @@ export const useSpeakers = (limit?: number) => {
       } catch (err: any) {
         console.error("Error fetching speakers:", err.message);
         setError(err.message);
-        setError(err.message);
       } finally {
         setLoading(false);
       }
@@ -73,7 +71,6 @@ export const useSpeakers = (limit?: number) => {
     fetchSpeakers();
   }, [limit]);
 
-  return { speakers, loading, error };
   return { speakers, loading, error };
 };
 
@@ -92,7 +89,6 @@ export const useSpeaker = (id: string) => {
         const { data, error: dbError } = await supabase
           .from("speakers")
           .select("*")
-          .eq("speaker_id", id)
           .eq("speaker_id", id)
           .single();
 

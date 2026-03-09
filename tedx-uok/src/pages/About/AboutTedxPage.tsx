@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import { Link } from 'react-router-dom';
 import { Check, ChevronLeft, ExternalLink, X } from 'lucide-react';
 
@@ -7,33 +8,32 @@ export default function AboutTedxPage() {
       {/* Hero Section */}
       <section className="py-16 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8">
-            <span className="text-primary">TED</span><sup className="text-primary">x</sup>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 md:mb-8">
+            {formatTedxText("TEDx", true)}
             <span className="text-foreground ml-2 sm:ml-4 text-2xl sm:text-4xl md:text-6xl lg:text-7xl block sm:inline mt-2 sm:mt-0">: Independently Organized</span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto px-2">
-            In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience.
+            {formatTedxText("In the spirit of ideas worth spreading, TEDx is a program of local, self-organized events that bring people together to share a TED-like experience.")}
           </p>
         </div>
 
         {/* Definition Section */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">What is TED<sup>x</sup> ?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">What is {formatTedxText("TEDx")} ?</h2>
           <div className="bg-card border border-border rounded-lg p-6 md:p-8">
             <p className="text-xl text-muted-foreground">
-              TEDx events are independently organized under a free license granted by TED.
-              These events bring the spirit of TED to local communities around the globe.
+              {formatTedxText("TEDx events are independently organized under a free license granted by TED. These events bring the spirit of TED to local communities around the globe.")}
             </p>
           </div>
         </div>
 
         {/* TED vs TEDx */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center">TED vs TED<sup>x</sup></h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center">TED vs {formatTedxText("TEDx")}</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* TED */}
             <div className="bg-card border border-border rounded-lg p-8">
-              <h3 className="text-3xl font-bold text-primary mb-6">TED<sup>x</sup></h3>
+              <h3 className="text-3xl font-bold text-primary mb-6">TED</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
@@ -56,7 +56,7 @@ export default function AboutTedxPage() {
 
             {/* TEDx */}
             <div className="bg-card border border-border rounded-lg p-8">
-              <h3 className="text-3xl font-bold text-primary mb-6">TED<sup>x</sup></h3>
+              <h3 className="text-3xl font-bold text-primary mb-6">{formatTedxText("TEDx")}</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <span className="text-primary mr-2">•</span>
@@ -84,7 +84,7 @@ export default function AboutTedxPage() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">Licensing & Rules</h2>
           <div className="bg-card border border-border rounded-lg p-6 md:p-8">
             <p className="text-xl text-muted-foreground mb-6">
-              TED<sup>x</sup> events are operated under license from TED. Organizers agree to follow strict guidelines to ensure quality and consistency with TED values.
+              {formatTedxText("TEDx events are operated under license from TED. Organizers agree to follow strict guidelines to ensure quality and consistency with TED values.")}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
@@ -96,7 +96,7 @@ export default function AboutTedxPage() {
                   </li>
                   <li className="flex items-center">
                     <Check className="w-5 h-5 text-primary mr-2" />
-                    <span className="text-muted-foreground">Official TEDx branding</span>
+                    <span className="text-muted-foreground">{formatTedxText("Official TEDx branding")}</span>
                   </li>
                   <li className="flex items-center">
                     <Check className="w-5 h-5 text-primary mr-2" />
@@ -133,7 +133,7 @@ export default function AboutTedxPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center border-2 border-primary text-white px-8 py-3 rounded-full font-bold hover:bg-primary transition-colors duration-300 mb-8 w-full sm:w-auto"
           >
-            Learn About Organizing TED<sup>x</sup>
+            Learn About Organizing {formatTedxText("TEDx")}
             <ExternalLink className="w-5 h-5 ml-2" />
           </a>
           <div className="pt-8 border-t border-border">

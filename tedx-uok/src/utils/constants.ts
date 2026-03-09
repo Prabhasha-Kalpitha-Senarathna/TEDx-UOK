@@ -8,7 +8,7 @@ export const sharedStyles = {
 	},
 	// Typography
 	typography: {
-		brandTitle: 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight',
+		brandTitle: 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight',
 		heroTitle: 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight',
 		sectionTitle: 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white',
 		cardTitle: 'font-bold text-white text-lg',

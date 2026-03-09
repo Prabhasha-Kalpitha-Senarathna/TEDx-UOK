@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Search } from "lucide-react";
 import { useSpeakers } from "../../hooks/useSpeakers";
+import { formatTedxText } from "../../utils/textFormatting";
 
 export default function SpeakersListPage() {
   const { speakers, loading, error } = useSpeakers();
@@ -61,7 +62,7 @@ export default function SpeakersListPage() {
             transition={{ delay: 0.2 }}
             className="text-white mb-6"
             style={{
-              fontWeight: 700,
+              fontWeight: 800,
               fontSize: "clamp(40px, 6vw, 72px)",
               lineHeight: 1.1,
               letterSpacing: "-0.02em",
@@ -78,7 +79,7 @@ export default function SpeakersListPage() {
             style={{ fontWeight: 300 }}
           >
             Meet the visionaries, innovators, and thought leaders who will share
-            their groundbreaking ideas at TEDxUOK 2025
+            their groundbreaking ideas at {formatTedxText("TEDxUOK")} 2025
           </motion.p>
         </motion.div>
 
@@ -202,7 +203,7 @@ export default function SpeakersListPage() {
               style={{ fontWeight: 300, fontSize: "16px", lineHeight: 1.7 }}
             >
               Get your tickets now to experience these inspiring speakers live
-              at TEDxUOK 2025
+              at {formatTedxText("TEDxUOK")} 2025
             </p>
             <Link to="/#register">
               <motion.button

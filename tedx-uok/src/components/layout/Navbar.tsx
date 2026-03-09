@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Button } from "../ui/Button";
 import { ChevronDown } from "lucide-react";
+import { formatTedxText } from "../../utils/textFormatting";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -51,12 +52,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex items-center gap-1 font-extrabold text-lg tracking-tight">
-              <span className="relative inline-block text-[#EB0028]">
-                <span className="text-[#EB0028]">TED</span>
-                <span className="text-[#EB0028] absolute top-[-20%]">x</span>
-                <span className="opacity-0">x</span>
-              </span>
-              <span className="text-white font-normal">UoK</span>
+              {formatTedxText("TEDx UoK", true)}
             </a>
           </div>
 
@@ -96,19 +92,10 @@ export default function Navbar() {
                             {sub.label === "TED" ? (
                               <span className="font-extrabold text-[#EB0028]">TED</span>
                             ) : sub.label === "TEDx" ? (
-                              <span className="relative inline-block font-extrabold text-[#EB0028]">
-                                <span>TED</span>
-                                <span className="absolute top-[-20%]">x</span>
-                                <span className="opacity-0">x</span>
-                              </span>
+                              <span className="font-extrabold">{formatTedxText("TEDx", true)}</span>
                             ) : sub.label === 'TEDxUoK' ? (
                               <span className="font-extrabold">
-                                <span className="relative inline-block text-[#EB0028]">
-                                  <span>TED</span>
-                                  <span className="absolute top-[-20%]">x</span>
-                                  <span className="opacity-0">x</span>
-                                </span>
-                                <span className="text-white font-normal"> UoK</span>
+                                {formatTedxText("TEDx UoK", true)}
                               </span>
                             ) : sub.label === 'Theme 2026' ? (
                               <span className="font-bold">{sub.label}</span>
@@ -245,21 +232,10 @@ export default function Navbar() {
                               {sub.label === "TED" ? (
                                 <span className="font-extrabold text-[#EB0028]">TED</span>
                               ) : sub.label === "TEDx" ? (
-                                <span className="relative inline-block font-extrabold text-[#EB0028]">
-                                  <span>TED</span>
-                                  <span className="absolute top-[-20%]">x</span>
-                                  <span className="opacity-0">x</span>
-                                </span>
+                                <span className="font-extrabold">{formatTedxText("TEDx", true)}</span>
                               ) : sub.label === 'TEDxUoK' ? (
                                 <span className="font-extrabold">
-                                  <span className="relative inline-block text-[#EB0028]">
-                                    <span>TED</span>
-                                    <span className="absolute top-[-20%]">
-                                      x
-                                    </span>
-                                    <span className="opacity-0">x</span>
-                                  </span>
-                                  <span className="text-white font-normal">UoK</span>
+                                  {formatTedxText("TEDx UoK", true)}
                                 </span>
                               ) : sub.label === 'Theme 2026' ? (
                                 <span className="font-bold">{sub.label}</span>

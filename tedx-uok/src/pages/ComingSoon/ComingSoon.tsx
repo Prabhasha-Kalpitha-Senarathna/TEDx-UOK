@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Instagram, ArrowLeft } from 'lucide-react';
+import { formatTedxText } from '../../utils/textFormatting';
 
 const ComingSoon: React.FC = () => {
   return (
@@ -15,15 +16,13 @@ const ComingSoon: React.FC = () => {
 
         {/* TEDx Logo */}
         <div className="mb-12 flex justify-center transform hover:scale-105 transition-transform duration-500">
-          <div className="flex items-center">
-            <span className="text-primary font-bold text-5xl md:text-7xl tracking-tighter">TED</span>
-            <sup className="text-primary text-2xl md:text-3xl font-bold align-super top-[-0.5em] mx-1">x  </sup>
-            <span className="text-foreground font-bold text-5xl md:text-7xl tracking-tighter">University of  Kelaniya</span>
+          <div className="flex items-center gap-x-4 text-5xl md:text-7xl tracking-tighter">
+            {formatTedxText("TEDx University of Kelaniya", true)}
           </div>
         </div>
 
         {/* Main Heading */}
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">
           <span className="block text-foreground">Something Extraordinary</span>
           <span className="block text-primary mt-2">Is Coming Your Way</span>
         </h1>

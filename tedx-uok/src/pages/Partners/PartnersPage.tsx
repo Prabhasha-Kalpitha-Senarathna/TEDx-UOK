@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import React, { useState, useEffect } from "react";
 import { Linkedin, Crown, Medal, HandHeart, Download, Send } from "lucide-react";
 import { Button } from "../../components/ui/Button";
@@ -204,10 +205,10 @@ const PartnersPage: React.FC = () => {
         >
           <div>
             <h1 className={sharedStyles.typography.brandTitle}>
-              <span className={sharedStyles.colors.tedxRed}>
-                TED<sup>x</sup>
-              </span>
-              <span className={`${sharedStyles.colors.white} font-normal`}> UoK</span>
+              {formatTedxText("TEDx UoK", true)}
+
+
+
             </h1>
             <h2
               className={`${sharedStyles.typography.heroTitle} ${sharedStyles.colors.white} mt-5`}
@@ -276,7 +277,7 @@ const PartnersPage: React.FC = () => {
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-8 leading-tight">
             Join us at{" "}
             <span className={sharedStyles.colors.tedxRed}>
-              TED<sup>x</sup>
+              {formatTedxText("TEDx")}
             </span>
             <span className={`${sharedStyles.colors.black} font-normal`}> UoK</span> 2026
           </h2>

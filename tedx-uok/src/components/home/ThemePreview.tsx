@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
+import { formatTedxText } from "../../utils/textFormatting";
 
 interface Props {
   theme?: string | null;
@@ -38,11 +39,11 @@ export function ThemePreview({ theme, description }: Props) {
             </p>
 
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
-              {displayTheme}
+              {formatTedxText(displayTheme)}
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              {displayDesc}
+              {formatTedxText(displayDesc)}
             </p>
 
             <Link to="/theme">

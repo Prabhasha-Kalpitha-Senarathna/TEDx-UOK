@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
+import { formatTedxText } from "../../utils/textFormatting";
 
 const footerLinks = {
   quickLinks: [
@@ -18,7 +19,7 @@ const footerLinks = {
       id: "about-tedx",
       name: (
         <>
-          About TED<sup>x</sup>
+          About {formatTedxText("TEDx")}
         </>
       ),
       href: "/about#tedx",
@@ -27,7 +28,7 @@ const footerLinks = {
       id: "about-tedxuok",
       name: (
         <>
-          About TED<sup>x</sup> UoK
+          About {formatTedxText("TEDx UoK")}
         </>
       ),
       href: "/about#tedxuok",
@@ -42,7 +43,7 @@ const footerLinks = {
       id: "tedx-rules",
       name: (
         <>
-          TED<sup>x</sup> Rules
+          {formatTedxText("TEDx")} Rules
         </>
       ),
       href: "https://www.ted.com/about/our-organization/our-policies-terms/tedx-rules",
@@ -71,16 +72,10 @@ export default function Footer() {
               to="/"
               className="inline-flex items-center gap-1 font-extrabold text-2xl tracking-tight"
             >
-              <span className="relative inline-block text-[#EB0028]">
-                <span>TED</span>
-                <span className="text-primary">
-                  <sup>x</sup>
-                </span>
-              </span>
-              <span className="text-white font-normal">UoK</span>
+              {formatTedxText("TEDx UoK", true)}
             </Link>
             <p className="text-white/50 text-sm leading-relaxed text-left">
-              Ideas worth spreading. An independently organized TED<sup>x</sup>{" "}
+              Ideas worth spreading. An independently organized {formatTedxText("TEDx")}{" "}
               event at the University of Kelaniya.
             </p>
             <div className="flex space-x-4">
@@ -173,22 +168,13 @@ export default function Footer() {
           <p className="text-sm text-white/50">
             © {currentYear}{" "}
             <span className="font-extrabold">
-              <span className="relative inline-block">
-                <span>TED</span>
-                <span className="absolute top-[-20%]">x</span>
-                <span className="opacity-0">x</span>
-              </span>
-              UoK
+              {formatTedxText("TEDx UoK", true)}
             </span>
             .
           </p>
           <p className="text-sm text-white/50">
             This independent{" "}
-            <span className="relative inline-block font-extrabold">
-              <span>TED</span>
-              <span className="absolute top-[-10%]">x</span>
-              <span className="opacity-0">x</span>
-            </span>{" "}
+            <span className="font-bold">{formatTedxText("TEDx", true)}</span>{" "}
             event is operated under license from TED.
           </p>
         </div>

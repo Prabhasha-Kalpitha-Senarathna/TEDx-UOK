@@ -10,6 +10,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { useSpeaker } from "../../hooks/useSpeakers";
+import { formatTedxText } from "../../utils/textFormatting";
 
 export function SpeakerDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -230,7 +231,7 @@ export function SpeakerDetailPage() {
                   className="text-white"
                   style={{ fontWeight: 600, fontSize: "28px" }}
                 >
-                  TEDx Talk
+                  {formatTedxText("TEDx Talk")}
                 </h2>
                 <h3
                   className="text-[#EB0028] text-2xl"

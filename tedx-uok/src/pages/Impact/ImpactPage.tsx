@@ -1,3 +1,4 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import React from "react";
 
 import Card from "../../components/ui/Card";
@@ -29,7 +30,7 @@ const PageHero = ({
   return (
     <header className={`mb-12 text-center ${className}`}>
       <div className="overflow-hidden mb-2">
-        <h1 className="text-4xl font-bold tracking-tight uppercase text-[#EB0028] animate-fade-in-up">
+        <h1 className="text-4xl font-extrabold tracking-tight uppercase text-[#EB0028] animate-fade-in-up">
           {title}
         </h1>
       </div>
@@ -128,7 +129,7 @@ const ImpactPage = () => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-6 text-white">Our Mission</h2>
           <p className="text-xl text-gray-300 font-light leading-relaxed">
-            At TED<sup>x</sup>UOK, we believe that ideas have the power to
+            At {formatTedxText("TEDx UoK")}, we believe that ideas have the power to
             change attitudes, lives, and ultimately, the world. Our social
             impact initiatives aim to foster sustainability, community growth,
             and inclusive dialogue, creating a ripple effect of positive change

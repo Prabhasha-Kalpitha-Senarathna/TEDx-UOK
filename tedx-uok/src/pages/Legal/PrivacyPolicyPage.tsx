@@ -1,5 +1,6 @@
 import { useSEO } from "../../hooks/useSEO";
 import { seoConfig } from "../../config/seo";
+import { formatTedxText } from "../../utils/textFormatting";
 
 export default function PrivacyPolicyPage() {
   useSEO(seoConfig.privacy);
@@ -18,7 +19,8 @@ export default function PrivacyPolicyPage() {
           {/* Contented */}
           <div className="space-y-8 text-white leading-relaxed text-center">
             <p className="text-lg">
-              TEDx UOK is committed to protecting your privacy. This policy
+              {formatTedxText("TEDx UOK")}{" "}
+              is committed to protecting your privacy. This policy
               explains how we collect, use, and safeguard your personal
               information.
             </p>
