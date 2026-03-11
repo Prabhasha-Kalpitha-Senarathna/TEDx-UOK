@@ -8,7 +8,7 @@ import AboutTedPage from "../pages/About/AboutTedPage";
 import AboutTedxPage from "../pages/About/AboutTedxPage";
 import AboutTedxUokPage from "../pages/About/AboutTedxUokPage";
 import TeamPage from "../pages/Team/TeamPage";
-import PartnersPage from "../pages/Partners/PartnersPage";
+// import PartnersPage from "../pages/Partners/PartnersPage";
 import ContactPage from "../pages/Contact/ContactPage";
 import RegistrationPage from "../pages/Registration/RegistrationPage";
 import ThemePage from "../pages/Theme/Theme";

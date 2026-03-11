@@ -12,9 +12,9 @@ import Countdown from "../../components/home/Countdown";
 import CTASection from "../../components/home/CTASection";
 import Hero from "../../components/home/Hero";
 import Highlights from "../../components/home/Highlights";
-import Speakers, { type Speaker } from "../../components/home/Speakers";
+// import Speakers, { type Speaker } from "../../components/home/Speakers";
 import { ThemePreview } from "../../components/home/ThemePreview";
-import { Partners, type Partner } from "../../components/home/Partners";
+// import { Partners, type Partner } from "../../components/home/Partners";
 
 const SPEAKER_BUCKET = import.meta.env.VITE_SUPABASE_BUCKET_SPEAKER_PHOTOS;
 const PARTNER_BUCKET = import.meta.env.VITE_SUPABASE_BUCKET_PARTNER_LOGOS;
