@@ -49,20 +49,20 @@ const HomePage = () => {
     );
   }
 
-  const realSpeakers: Speaker[] = rawSpeakers.map((s) => ({
-    id: s.speaker_id,
-    name: s.full_name,
-    title: s.title,
-    talkTitle: s.talk_title || "To Be Announced",
-    image: getImageUrl(s.photo_url, SPEAKER_BUCKET),
-  }));
+  // const realSpeakers: Speaker[] = rawSpeakers.map((s) => ({
+  //   id: s.speaker_id,
+  //   name: s.full_name,
+  //   title: s.title,
+  //   talkTitle: s.talk_title || "To Be Announced",
+  //   image: getImageUrl(s.photo_url, SPEAKER_BUCKET),
+  // }));
 
-  const realPartners: Partner[] = rawPartners.map((p) => ({
-    id: p.id,
-    name: p.name,
-    tier: p.tier,
-    logo: getImageUrl(p.logo_url, PARTNER_BUCKET),
-  }));
+  // const realPartners: Partner[] = rawPartners.map((p) => ({
+  //   id: p.id,
+  //   name: p.name,
+  //   tier: p.tier,
+  //   logo: getImageUrl(p.logo_url, PARTNER_BUCKET),
+  // }));
 
   const eventDate = event?.date || null;
 
