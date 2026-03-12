@@ -17,7 +17,7 @@ const ComingSoon: React.FC = () => {
         {/* TEDx Logo */}
         <div className="mb-12 flex justify-center transform hover:scale-105 transition-transform duration-500">
           <div className="flex items-center gap-x-4 text-5xl md:text-7xl tracking-tighter">
-            {formatTedxText("TEDx University of Kelaniya", true)}
+            {formatTedxText("TEDx UoK", true)}
           </div>
         </div>
 
