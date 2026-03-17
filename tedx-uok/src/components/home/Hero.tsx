@@ -1,7 +1,30 @@
 import { ArrowRight } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "../ui/Button";
+import { Link } from "react-router-dom";
+import { formatTedxText } from "../../utils/textFormatting";
 
-const Hero = () => {
+interface props {
+  date: string | null;
+  venue: string | null;
+  theme: string | null;
+  ctaLabel?: string;
+  ctaLink?: string;
+}
+
+const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
+  const eventDate = date
+    ? new Date(date).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    })
+    : "Date To Be Announced";
+
+  const eventVenue = venue || "Venue To Be Annouced";
+  const eventTheme = theme || "Theme To Be Annouced";
+  const primaryLabel = ctaLabel || "Register Now";
+  const primaryLink = ctaLink || "/register";
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-background">
       {/* Background Pattern */}
@@ -25,22 +48,19 @@ const Hero = () => {
             {/* Event Badge */}
             <div className="inline-flex items-center gap-2 mb-8 opacity-0 animate-fade-in-up">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
-                Independently Organized TEDx Event
+              <span className="text-sm font-medium uppercase text-muted-foreground tracking-widest">
+                Independently Organized {formatTedxText("TEDx")} Event
               </span>
             </div>
 
             {/* Main Title */}
-            <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-6 opacity-0 animate-fade-in-up animation-delay-100">
-              <span className="text-primary">TED</span>
-              <span className="text-primary absolute top-[-20%] ">x</span>
-              <span className="opacity-0">x</span>
-              <span className="text-foreground ">UOK</span>
+            <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-6 opacity-0 animate-fade-in-up animation-delay-100">
+              {formatTedxText("TEDx UoK", true)}
             </h1>
 
             {/* Theme */}
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-8 opacity-0 animate-fade-in-up animation-delay-200">
-              Ideas Worth Spreading
+              {formatTedxText(eventTheme, true)}
             </h2>
 
             {/* Event Details */}
@@ -52,7 +72,7 @@ const Hero = () => {
                     Date
                   </p>
                   <p className="text-lg font-medium text-foreground">
-                    March 15, 2026
+                    {eventDate}
                   </p>
                 </div>
               </div>
@@ -63,7 +83,7 @@ const Hero = () => {
                     Venue
                   </p>
                   <p className="text-lg font-medium text-foreground">
-                    University of Kelaniya
+                    {eventVenue}
                   </p>
                 </div>
               </div>
@@ -71,13 +91,17 @@ const Hero = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animation-delay-400">
-              <Button variant="tedxPrimary" size="xl">
-                Register Now
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-              <Button variant="tedxSecondary" size="xl">
-                Learn More
-              </Button>
+              <Link to={primaryLink}>
+                <Button variant="tedxPrimary" size="xl">
+                  {primaryLabel}
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button variant="tedxSecondary" size="xl">
+                  Learn More
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -87,8 +111,7 @@ const Hero = () => {
               {/* TEDx Text */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="relative text-[12rem] xl:text-[14rem] font-bold select-none leading-none tracking-tighter">
-                  <span className="text-primary/20">TED</span>
-                  <span className="text-primary/10 absolute top-[-20%]">x</span>
+                  <span className="opacity-20">{formatTedxText("TEDx", true)}</span>
                 </span>
               </div>
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { supabase } from "../api/supabaseClient";
+import { supabase } from "../lib/supabase";
 
 export interface AgendaItem {
   id: number;

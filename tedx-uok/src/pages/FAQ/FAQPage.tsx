@@ -1,221 +1,171 @@
-// src/pages/FAQ/FAQPage.tsx
-import { useState } from "react";
-import { ChevronDown } from 'lucide-react';
+import { formatTedxText } from "../../utils/textFormatting";
+import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
+import { supabase } from "../../lib/supabase";
+
+import { useSEO } from "../../hooks/useSEO";
+import { seoConfig } from "../../config/seo";
 
 type FAQItem = {
+  faq_item_id: string;
+  faq_category_id: string;
   question: string;
   answer: string;
+  display_order: number;
+};
+
+type FAQCategory = {
+  faq_category_id: string;
+  name: string;
+  display_order: number;
+  faq_items: FAQItem[];
 };
 
 type FAQGroup = {
-  title: string;
-  titleParts: { text: string; isRed: boolean }[];
+  category: FAQCategory;
   items: FAQItem[];
+  titleParts: { text: string; isRed: boolean }[];
 };
 
-const faqGroups: FAQGroup[] = [
-  {
-    title: "Registration & Tickets",
-    titleParts: [
-      { text: "Registration & ", isRed: false },
-      { text: "Tickets", isRed: true }
-    ],
-    items: [
-      {
-        question: "How do I register for TEDxUoK?",
-        answer:
-          "Registration details will be published on the official TEDxUoK website and social media channels. Registration is mandatory as seating is limited."
-      },
-      {
-        question: "Are tickets refundable?",
-        answer:
-          "Tickets are non-refundable and non-transferable unless the event is cancelled by the organizers."
-      },
-      {
-        question: "What ticket types are available?",
-        answer:
-          "We typically offer Student tickets, General Admission tickets, and VIP passes. Pricing and benefits for each tier will be announced during registration."
-      },
-      {
-        question: "How much do tickets cost?",
-        answer:
-          "Ticket prices vary by type. Student tickets are usually offered at a discounted rate. Final pricing will be announced with registration details."
-      }
-    ]
-  },
-  {
-    title: "Event Day Information",
-    titleParts: [
-      { text: "Event Day ", isRed: false },
-      { text: "Information", isRed: true }
-    ],
-    items: [
-      {
-        question: "When should attendees arrive?",
-        answer:
-          "Attendees are advised to arrive at least 30 minutes before the scheduled start time to allow for check-in and seating."
-      },
-      {
-        question: "What items are allowed inside the venue?",
-        answer:
-          "Small personal items are allowed. Large bags, professional cameras, and recording equipment may be restricted."
-      },
-      {
-        question: "What should I bring to the event?",
-        answer:
-          "Bring your ticket confirmation (digital or printed), a valid ID, and an open mind! Light refreshments may be provided."
-      },
-      {
-        question: "What is the dress code?",
-        answer:
-          "Smart casual attire is recommended. Feel comfortable, but dress respectfully for the occasion."
-      }
-    ]
-  },
-  {
-    title: "Speakers & Content",
-    titleParts: [
-      { text: "Speakers & ", isRed: false },
-      { text: "Content", isRed: true }
-    ],
-    items: [
-      {
-        question: "How are speakers selected?",
-        answer:
-          "Speakers are carefully selected based on their expertise, story, and alignment with our event theme. We prioritize diverse voices and ideas worth spreading."
-      },
-      {
-        question: "Can I nominate someone to be a speaker?",
-        answer:
-          "Yes! Speaker nominations and applications are typically accepted during our call for speakers period. Details will be shared on our website."
-      },
-      {
-        question: "Will there be Q&A sessions with speakers?",
-        answer:
-          "While time may not permit individual Q&A sessions, there will be networking opportunities during breaks where you may interact with speakers."
-      },
-      {
-        question: "Will the talks be recorded?",
-        answer:
-          "Yes, talks will be professionally recorded and may be published on the TEDx YouTube channel after the event, subject to speaker approval."
-      }
-    ]
-  },
-  {
-    title: "Media & Accessibility",
-    titleParts: [
-      { text: "Media & ", isRed: false },
-      { text: "Accessibility", isRed: true }
-    ],
-    items: [
-      {
-        question: "Can I take photos or videos?",
-        answer:
-          "Personal photography is permitted. Professional recording requires prior approval from the TEDxUoK organizing team."
-      },
-      {
-        question: "Is the venue wheelchair accessible?",
-        answer:
-          "Yes. The venue provides wheelchair access and designated seating areas for accessibility needs."
-      },
-      {
-        question: "What accessibility accommodations are available?",
-        answer:
-          "We provide wheelchair access, reserved seating, sign language interpretation (upon request), and assistance for attendees with disabilities."
-      },
-      {
-        question: "Are service animals allowed?",
-        answer:
-          "Yes, service animals are welcome at TEDx UOK."
-      }
-    ]
-  },
-  {
-    title: "Partnerships & Volunteering",
-    titleParts: [
-      { text: "Partnerships & ", isRed: false },
-      { text: "Volunteering", isRed: true }
-    ],
-    items: [
-      {
-        question: "How can I become a sponsor or partner?",
-        answer:
-          "Partnership opportunities are available at various levels. Please download our sponsorship prospectus or contact us at partnerships@tedxuok.com."
-      },
-      {
-        question: "How can I volunteer at TEDx UOK?",
-        answer:
-          "Volunteer applications are accepted through our website. Fill out the volunteer form and our team will contact you with available roles."
-      },
-      {
-        question: "What volunteer roles are available?",
-        answer:
-          "Roles include registration desk, ushering, technical support, photography, social media, hospitality, and logistics."
-      },
-      {
-        question: "Do volunteers get free entry to the event?",
-        answer:
-          "Yes, volunteers typically receive complimentary access to the event, a certificate of participation, and refreshments during their shifts."
-      }
-    ]
-  }
-];
-
 export default function FAQPage() {
+  useSEO(seoConfig.faq);
+
   const [openId, setOpenId] = useState<string | null>(null);
+  const [faqGroups, setFaqGroups] = useState<FAQGroup[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  function splitTitle(title: string) {
+    const words = title.split(" ");
+
+    if (words.length === 1) {
+      return [{ text: title, isRed: true }];
+    }
+
+    const lastWord = words.pop();
+
+    return [
+      { text: words.join(" ") + " ", isRed: false },
+      { text: lastWord!, isRed: true },
+    ];
+  }
+
+  useEffect(() => {
+    async function fetchFAQs() {
+      try {
+        setLoading(true);
+
+        const { data, error } = await supabase
+          .from("faq_categories")
+          .select(`
+            faq_category_id,
+            name,
+            display_order,
+            faq_items (
+              faq_item_id,
+              faq_category_id,
+              question,
+              answer,
+              display_order
+            )
+          `)
+          .order("display_order", { ascending: true })
+          .order("display_order", {
+            foreignTable: "faq_items",
+            ascending: true,
+          });
+
+        if (error) throw error;
+
+        const groups: FAQGroup[] =
+          data
+            ?.filter((c) => c.faq_items.length > 0)
+            .map((c) => ({
+              category: c,
+              items: c.faq_items,
+              titleParts: splitTitle(c.name),
+            })) || [];
+
+        setFaqGroups(groups);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load FAQ data.");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchFAQs();
+  }, []);
+
+  if (loading) {
+    return (
+      <main className="bg-black min-h-screen flex items-center justify-center">
+        <div className="text-white">Loading FAQs...</div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="bg-black min-h-screen flex items-center justify-center">
+        <div className="text-red-500">{error}</div>
+      </main>
+    );
+  }
 
   return (
     <main className="bg-black w-full">
       <section className="mx-auto max-w-6xl px-6 py-32 space-y-24">
+
         {/* Header */}
         <div className="text-center space-y-4">
-          <p className="text-sm uppercase tracking-wide text-[#EB0028]">
-            FAQ
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-white">
             Frequently <span className="text-[#EB0028]">Asked Questions</span>
           </h1>
+
           <p className="mx-auto max-w-2xl text-white">
-            Answers to common questions about attending TEDxUoK.
+            Answers to common questions about attending {formatTedxText("TEDx UoK")}.
           </p>
         </div>
 
-        {/* FAQ Groups */}
-        {faqGroups.map((group, gIndex) => (
-          <div key={gIndex} className="space-y-10">
-            <h2 className="text-2xl font-semibold text-center">
-              {group.titleParts.map((part, idx) => (
-                <span key={idx} className={part.isRed ? "text-[#EB0028]" : "text-white"}>
-                  {part.text}
+        {faqGroups.map((group) => (
+          <div key={group.category.faq_category_id}>
+
+            <h2 className="text-2xl font-semibold text-center mb-10">
+              {group.titleParts.map((p, i) => (
+                <span key={i} className={p.isRed ? "text-[#EB0028]" : "text-white"}>
+                  {p.text}
                 </span>
               ))}
             </h2>
 
             <div className="grid gap-6 md:grid-cols-2">
-              {group.items.map((item, iIndex) => {
-                const id = `${gIndex}-${iIndex}`;
-                const isOpen = openId === id;
+              {group.items.map((item) => {
+                const isOpen = openId === item.faq_item_id;
 
                 return (
                   <div
-                    key={id}
-                    className="rounded-2xl border border-[#1F1F1F] bg-[#0E0E0E] px-6 py-6 hover:border-[#EB0028]/50 transition-all duration-300"
+                    key={item.faq_item_id}
+                    className="rounded-2xl border border-[#1F1F1F] bg-[#0E0E0E] px-6"
                   >
                     <button
-                      onClick={() => setOpenId(isOpen ? null : id)}
-                      aria-expanded={isOpen}
-                      className="w-full text-left font-medium text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EB0028] rounded flex items-start justify-between gap-3"
+                      onClick={() =>
+                        setOpenId(isOpen ? null : item.faq_item_id)
+                      }
+                      className="w-full flex justify-between py-6 text-left text-white"
                     >
-                      <span className="flex-1 ">{item.question}</span>
+                      <span>{item.question}</span>
+
                       <ChevronDown
-                        className={`w-5 h-5 text-[#EB0028] flex-shrink-0 transition-transform duration-300 ${
-                          isOpen ? 'rotate-180' : ''
+                        className={`text-[#EB0028] transition-transform ${
+                          isOpen ? "rotate-180" : ""
                         }`}
                       />
                     </button>
 
                     {isOpen && (
-                      <p className="mt-4 text-white leading-relaxed text-left">
+                      <p className="pb-6 text-gray-300 border-t border-[#1F1F1F] pt-4 whitespace-pre-line">
                         {item.answer}
                       </p>
                     )}

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, Linkedin, Twitter } from "lucide-react";
+import { formatTedxText } from "../../utils/textFormatting";
 
 const footerLinks = {
   quickLinks: [
@@ -10,19 +11,41 @@ const footerLinks = {
     { name: "Team", href: "/team" },
     { name: "Press & Media", href: "/media" },
     { name: "Volunteering", href: "/volunteer" },
+    { name: "Community", href: "/community/register" },
   ],
   about: [
-    { name: "About TED", href: "/about#ted" },
-    { name: "About TEDx", href: "/about#tedx" },
-    { name: "About TEDxUoK", href: "/about#tedxuok" },
+    { id: "about-ted", name: "About TED", href: "/about#ted" },
+    {
+      id: "about-tedx",
+      name: (
+        <>
+          About {formatTedxText("TEDx")}
+        </>
+      ),
+      href: "/about#tedx",
+    },
+    {
+      id: "about-tedxuok",
+      name: (
+        <>
+          About {formatTedxText("TEDx UoK")}
+        </>
+      ),
+      href: "/about#tedxuok",
+    },
   ],
   legal: [
-    { name: "Privacy Policy", href: "/privacy" },
-    { name: "Code of Conduct", href: "/code-of-conduct" },
-    { name: "Accessibility", href: "/accessibility" },
-    { name: "Licensing", href: "/licensing" },
+    { id: "privacy", name: "Privacy Policy", href: "/privacy" },
+    { id: "conduct", name: "Code of Conduct", href: "/code-of-conduct" },
+    { id: "accessibility", name: "Accessibility", href: "/accessibility" },
+    { id: "licensing", name: "Licensing", href: "/licensing" },
     {
-      name: "TEDx Rules",
+      id: "tedx-rules",
+      name: (
+        <>
+          {formatTedxText("TEDx")} Rules
+        </>
+      ),
       href: "https://www.ted.com/about/our-organization/our-policies-terms/tedx-rules",
       external: true,
     },
@@ -34,7 +57,6 @@ const socials = [
   { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
   { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
   { icon: Twitter, href: "https://x.com", label: "X (Twitter)" },
-
 ];
 
 export default function Footer() {
@@ -50,16 +72,11 @@ export default function Footer() {
               to="/"
               className="inline-flex items-center gap-1 font-extrabold text-2xl tracking-tight"
             >
-              <span className="relative inline-block text-[#EB0028]">
-                <span>TED</span>
-                <span className="absolute top-[-10%]">x</span>
-                <span className="opacity-0">x</span>
-              </span>
-              <span className="text-white">UoK</span>
+              {formatTedxText("TEDx UoK", true)}
             </Link>
             <p className="text-white/50 text-sm leading-relaxed text-left">
-              Ideas worth spreading. An independently organized TEDx event at
-              the University of Kelaniya.
+              Ideas worth spreading. An independently organized {formatTedxText("TEDx")}{" "}
+              event at the University of Kelaniya.
             </p>
             <div className="flex space-x-4">
               {socials.map((social) => (
@@ -103,7 +120,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {footerLinks.about.map((link) => (
-                <li key={link.name}>
+                <li key={link.id || link.href}>
                   <Link
                     to={link.href}
                     className="text-sm text-white/70 hover:text-[var(--tedx-red)] transition-colors"
@@ -122,7 +139,7 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
-                <li key={link.name}>
+                <li key={link.id || link.href}>
                   {link.external ? (
                     <a
                       href={link.href}
@@ -151,22 +168,13 @@ export default function Footer() {
           <p className="text-sm text-white/50">
             © {currentYear}{" "}
             <span className="font-extrabold">
-              <span className="relative inline-block">
-                <span>TED</span>
-                <span className="absolute top-[-20%]">x</span>
-                <span className="opacity-0">x</span>
-              </span>
-              UoK
+              {formatTedxText("TEDx UoK", true)}
             </span>
             .
           </p>
           <p className="text-sm text-white/50">
             This independent{" "}
-            <span className="relative inline-block font-extrabold">
-              <span>TED</span>
-              <span className="absolute top-[-10%]">x</span>
-              <span className="opacity-0">x</span>
-            </span>{" "}
+            <span className="font-bold">{formatTedxText("TEDx", true)}</span>{" "}
             event is operated under license from TED.
           </p>
         </div>

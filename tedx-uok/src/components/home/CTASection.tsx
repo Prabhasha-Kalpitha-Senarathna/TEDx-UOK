@@ -1,7 +1,17 @@
+import { formatTedxText } from '../../utils/textFormatting';
 import { ArrowRight, Handshake, Users } from "lucide-react";
-import { Button } from "./ui/Button";
+import { Button } from "../ui/Button";
+import { Link } from "react-router-dom";
 
-const CTASection = () => {
+interface props {
+  ctaLabel?: string;
+  ctaLink?: string;
+}
+
+const CTASection = ({ ctaLabel, ctaLink }: props) => {
+  const primaryLabel = ctaLabel || "Register Now";
+  const primaryLink = ctaLink || "/register";
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -14,16 +24,18 @@ const CTASection = () => {
             <h3 className="text-2xl font-bold mb-4">Attend the Event</h3>
             <p className="text-primary-foreground/80 mb-8 leading-relaxed">
               Be part of an unforgettable experience. Register now to secure
-              your spot at TEDxUOK.
+              your spot at {formatTedxText("TEDx UoK")}.
             </p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-            >
-              Register Now
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link to={primaryLink}>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+              >
+                {primaryLabel}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           {/* Volunteer */}
@@ -38,10 +50,12 @@ const CTASection = () => {
               Join our team and help create an extraordinary event. Make a
               difference behind the scenes.
             </p>
-            <Button variant="tedxSecondary" size="lg">
-              Apply to Volunteer
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link to="/volunteer">
+              <Button variant="tedxSecondary" size="lg">
+                Apply to Volunteer
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
 
           {/* Partner */}
@@ -56,10 +70,12 @@ const CTASection = () => {
               Align your brand with ideas worth spreading. Become a partner and
               reach our engaged audience.
             </p>
-            <Button variant="tedxSecondary" size="lg">
-              Become a Partner
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link to="/partner">
+              <Button variant="tedxSecondary" size="lg">
+                Become a Partner
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
