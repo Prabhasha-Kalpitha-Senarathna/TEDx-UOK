@@ -3,11 +3,13 @@ import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 import { formatTedxText } from "../../utils/textFormatting";
 
-interface props {
-  description: string | null;
-}
+const aboutContent = {
+  title: "About",
+  description:
+    "TEDx UoK is a student-led initiative organised under an official TEDx licence. It serves as a platform for students, academics, alumni, and external voices to share perspectives that challenge thinking and spark conversation within and beyond the university community.",
+};
 
-const About = ({ description }: props) => {
+const About = () => {
   return (
     <section className="py-24 bg-card">
       <div className="container mx-auto px-6">
@@ -15,17 +17,13 @@ const About = ({ description }: props) => {
           {/* Content */}
           <div>
             <p className="text-sm font-medium text-primary uppercase tracking-widest mb-4">
-              About The Event
+              {aboutContent.title}
             </p>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
               Ideas that inspire, connect, and transform
             </h2>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              {description ? (
-                formatTedxText(description)
-              ) : (
-                formatTedxText("TEDx UoK is a student-led initiative organised under an official TEDx licence. It serves as a platform for students, academics, alumni, and external voices to share perspectives that challenge thinking and spark conversation within and beyond the university community.")
-              )}
+              {formatTedxText(aboutContent.description)}
             </p>
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
               {formatTedxText("As an independently organized TEDx event, we follow the spirit of TED's mission to spread ideas that matter. This event is about sparking deep discussion and fostering connections among attendees.")}

@@ -68,8 +68,7 @@ const HomePage = () => {
   const eventDate = event?.date || null;
 
   const eventVenue = event?.venues?.name || null;
-  const eventTheme = event?.theme || null;
-  const eventDesc = event?.description || null;
+
   const ctaLabel = settings?.primary_cta_label;
   const ctaLink = settings?.primary_cta_url;
 
@@ -83,14 +82,13 @@ const HomePage = () => {
         <Hero
           date={eventDate}
           venue={eventVenue}
-          theme={eventTheme}
           ctaLabel={ctaLabel}
           ctaLink={ctaLink}
         />
         <Countdown date={eventDate} />
-        <About description={eventDesc} />
+        <About />
         <Highlights />
-        <ThemePreview theme={eventTheme} description={eventDesc} />
+        <ThemePreview />
         {/* <Speakers speakers={realSpeakers} /> */}
         {/* <Partners partners={realPartners} /> */}
         <CTASection ctaLabel={ctaLabel} ctaLink={ctaLink} />

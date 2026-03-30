@@ -2,11 +2,41 @@ import { Link } from 'react-router-dom';
 import { ChevronLeft, ExternalLink, Film, GraduationCap, Library } from 'lucide-react';
 import { Helmet } from "react-helmet-async";
 
+const aboutTedContent = {
+  title: "About TED",
+  paragraphs: [
+    "TED is a nonprofit, nonpartisan organisation dedicated to discovering, debating, and spreading ideas that spark conversation, deepen understanding, and drive meaningful change. TED is devoted to curiosity, reason, wonder, and the pursuit of knowledge — without an agenda.",
+    "Founded in 1984 as a conference where Technology, Entertainment, and Design converged, TED has since grown into a global platform covering science, business, education, arts, and global issues. TED’s initiatives include TED Talks, TED-Ed, podcasts, and thousands of independently organised TEDx events worldwide.",
+  ],
+};
+
+const historyContent = {
+  title: "History",
+  items: [
+    {
+      year: "1984 - The Beginning",
+      description:
+        "TED began as a conference where Technology, Entertainment, and Design came together, creating a platform for sharing ideas across disciplines.",
+    },
+    {
+      year: "2006 - Going Global",
+      description:
+        "TED Talks were first shared online, making powerful ideas freely accessible to a global audience and expanding TED’s reach beyond the conference stage.",
+    },
+    {
+      year: "Today",
+      heading: "A Global Platform",
+      description:
+        "TED has grown into a global platform, sharing ideas across a wide range of topics and languages, and increasing dialogue among communities around the world.",
+    },
+  ],
+};
+
 export default function AboutTedPage() {
   return (
     <div className="min-h-screen bg-background text-foreground pt-20">
       <Helmet>
-        <title>About TED | TEDx University of Kelaniya</title>
+        <title>{aboutTedContent.title} | TEDx University of Kelaniya</title>
         <meta name="description" content="Read about TED's mission, history, and global initiatives of the world's leading ideas platform." />
       </Helmet>
       {/* Hero Section */}
@@ -23,42 +53,33 @@ export default function AboutTedPage() {
 
         {/* Mission Section */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">Our Mission</h2>
-          <div className="bg-card border border-border rounded-lg p-6 md:p-8">
-            <p className="text-xl text-muted-foreground mb-6">
-              TED's mission is to spread ideas. We believe passionately in the power of ideas to change attitudes, lives and, ultimately, the world.
-            </p>
-            <p className="text-lg text-muted-foreground">
-              On TED.com, we're building a clearinghouse of free knowledge from the world's most inspired thinkers — and a community of curious souls to engage with ideas and each other.
-            </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">
+            {aboutTedContent.title}
+          </h2>
+          <div className="bg-card border border-border rounded-lg p-6 md:p-8 space-y-6">
+            {aboutTedContent.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-xl text-muted-foreground leading-relaxed">
+                {paragraph}
+              </p>
+            ))}
           </div>
         </div>
 
         {/* History Section */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">History</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-6 md:mb-8 text-center md:text-left">{historyContent.title}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <div className="text-primary text-3xl font-bold mb-4">1984</div>
-              <h3 className="text-xl font-bold text-foreground mb-3">The Beginning</h3>
-              <p className="text-muted-foreground">
-                TED began as a conference where Technology, Entertainment and Design converged.
-              </p>
-            </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <div className="text-primary text-3xl font-bold mb-4">2006</div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Going Online</h3>
-              <p className="text-muted-foreground">
-                First TED Talks posted online, beginning the global idea-sharing revolution.
-              </p>
-            </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <div className="text-primary text-3xl font-bold mb-4">Today</div>
-              <h3 className="text-xl font-bold text-foreground mb-3">Global Platform</h3>
-              <p className="text-muted-foreground">
-                Covering all topics in 100+ languages with billions of views worldwide.
-              </p>
-            </div>
+            {historyContent.items.map((item, index) => (
+              <div key={index} className="bg-card border border-border rounded-lg p-6">
+                <div className="text-primary text-2xl font-bold mb-4">{item.year}</div>
+                {item.heading && (
+                  <h3 className="text-xl font-bold text-foreground mb-3">{item.heading}</h3>
+                )}
+                <p className="text-muted-foreground leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
 

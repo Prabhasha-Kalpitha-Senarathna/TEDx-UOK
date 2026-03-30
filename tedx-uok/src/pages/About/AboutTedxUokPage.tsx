@@ -3,14 +3,20 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ChevronLeft } from 'lucide-react';
 import { Helmet } from "react-helmet-async";
 
-export default function AboutTedxUokPage() {
-  const currentTheme = "The Ripple Effect";
-  const eventYear = "2024";
+const aboutTedxUokContent = {
+  title: "About TEDx UoK - Our Mission and Story",
+  paragraphs: [
+    "TEDx UoK is an independently organised TEDx event based at the University of Kelaniya, created with the aim of assembling thinkers, innovators, and storytellers who are shaping ideas that matter.",
+    "Rooted in a university known for academic excellence and cultural diversity, TEDx UoK serves as a platform for meaningful conversations that challenge assumptions, explore new perspectives, and spark meaningful dialogue. The event celebrates ideas that emerge from curiosity, courage, and the willingness to move beyond the familiar.",
+    "TEDx UoK is organised by a passionate team of students and volunteers which reflects a commitment to intellectual openness and interdisciplinary thinking. It provides a space where voices from varied backgrounds such as academic, industry, arts, scientific, and community backgrounds can share insights that reverberate both locally and globally.",
+  ],
+};
 
+export default function AboutTedxUokPage() {
   return (
     <div className="min-h-screen bg-background text-foreground pt-20">
       <Helmet>
-        <title>About TEDxUOK | TEDx University of Kelaniya</title>
+        <title>{aboutTedxUokContent.title} | TEDx University of Kelaniya</title>
         <meta name="description" content="Our story, mission, and commitment to spreading ideas at University of Kelaniya." />
       </Helmet>
       {/* Hero Section */}
@@ -18,49 +24,38 @@ export default function AboutTedxUokPage() {
         <div className="text-center mb-16">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 md:mb-8">
             {formatTedxText("TEDx UoK", true)}
-
-
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto px-2">
             Spreading ideas worth sharing at the University of Kelaniya.
           </p>
-          <div className="mt-8 inline-block border-l-4 border-primary pl-4">
-            <p className="text-xl text-foreground">
-              {formatTedxText(`TEDx UoK ${eventYear}: ${currentTheme}`, true)}
-            </p>
-          </div>
         </div>
 
         {/* Mission & Story */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-6 md:mb-8 text-center md:text-left">Our Mission & Story</h2>
-          <div className="bg-card border border-border rounded-lg p-8">
-            <p className="text-xl text-muted-foreground mb-6">
-              {formatTedxText("TEDx UoK")} was founded with a simple yet powerful vision: to create a platform
-              where innovative ideas from the University of Kelaniya community could be
-              shared with the world.
-            </p>
-            <p className="text-lg text-muted-foreground">
-              As the first officially licensed {formatTedxText("TEDx")} event at University of Kelaniya,
-              we're committed to fostering intellectual curiosity, interdisciplinary
-              dialogue, and transformative thinking.
-            </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-6 md:mb-8 text-center md:text-left">
+            {aboutTedxUokContent.title}
+          </h2>
+          <div className="bg-card border border-border rounded-lg p-8 space-y-6">
+            {aboutTedxUokContent.paragraphs.map((paragraph, index) => (
+              <p key={index} className="text-lg text-muted-foreground leading-relaxed">
+                {formatTedxText(paragraph)}
+              </p>
+            ))}
           </div>
         </div>
 
         {/* Theme Intro */}
         <div className="mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-6 md:mb-8 text-center md:text-left">{formatTedxText(`TEDx UoK ${eventYear}: ${currentTheme}`, true)}</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-foreground mb-6 md:mb-8 text-center md:text-left">
+            {formatTedxText("TEDx UoK 2026 Theme: UNCHARTED", true)}
+          </h2>
           <div className="bg-card border border-border rounded-lg p-8">
-            <h3 className="text-2xl font-bold text-foreground mb-4">What is the Ripple Effect?</h3>
-            <p className="text-muted-foreground mb-4">
-              Every idea, no matter how small, has the potential to create waves of change.
-              Like a single pebble dropped in water creates ripples that expand outward,
-              our ideas and actions can influence far beyond our immediate reach.
+            <h3 className="text-2xl font-bold text-foreground mb-4">What is UNCHARTED?</h3>
+            <p className="text-muted-foreground mb-4 leading-relaxed">
+              Progress begins at the edge of the known. UNCHARTED explores ideas born in uncertainty, where curiosity challenges convention, boundaries are questioned, and new perspectives emerge.
             </p>
-            <p className="text-muted-foreground">
-              Through this theme, we'll explore stories of innovation, courage, and
-              transformation that started small but created lasting impact.
+            <p className="text-muted-foreground leading-relaxed">
+              At TEDx UoK 2026, the theme invites thinkers, creators, and storytellers to venture beyond the familiar and reimagine what is possible.
             </p>
           </div>
         </div>

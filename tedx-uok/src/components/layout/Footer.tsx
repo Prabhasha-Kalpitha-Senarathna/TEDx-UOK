@@ -175,7 +175,7 @@ export default function Footer() {
           <p className="text-sm text-white/50">
             This independent{" "}
             <span className="font-bold">{formatTedxText("TEDx", true)}</span>{" "}
-            event is operated under license from TED.
+            event is operated under licence from TED.
           </p>
         </div>
       </div>

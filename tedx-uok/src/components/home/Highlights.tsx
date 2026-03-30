@@ -1,31 +1,34 @@
 import { Lightbulb, Users, Mic2, Handshake } from "lucide-react";
 
-const highlights = [
-  {
-    icon: Mic2,
-    title: "Inspiring Talks",
-    description:
-      "Hear from thought leaders sharing groundbreaking ideas across diverse fields.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovative Theme",
-    description:
-      "Explore this year's theme through multiple perspectives and disciplines.",
-  },
-  {
-    icon: Users,
-    title: "Networking",
-    description:
-      "Connect with like-minded individuals passionate about ideas and change.",
-  },
-  {
-    icon: Handshake,
-    title: "Community Impact",
-    description:
-      "Be part of a movement that creates lasting positive change in our community.",
-  },
-];
+const whatToExpect = {
+  title: "What to Expect",
+  items: [
+    {
+      icon: Mic2,
+      title: "Inspiring live speakers",
+      description:
+        "Hear from thought leaders, innovators, and storytellers who share original ideas and lived experiences that challenge perspectives and spark insight.",
+    },
+    {
+      icon: Lightbulb,
+      title: "Curated TED Talks",
+      description:
+        "Carefully selected TED Talks that complement the event theme and extend conversations beyond the stage.",
+    },
+    {
+      icon: Users,
+      title: "Thought-provoking discussions",
+      description:
+        "Opportunities to reflect, question, and engage in meaningful dialogue inspired by the ideas presented.",
+    },
+    {
+      icon: Handshake,
+      title: "A space for connection and collaboration",
+      description:
+        "An environment that brings together curious minds to connect, exchange perspectives, and build lasting conversations.",
+    },
+  ],
+};
 
 const Highlights = () => {
   return (
@@ -37,7 +40,7 @@ const Highlights = () => {
             Event Highlights
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            What to expect
+            {whatToExpect.title}
           </h2>
           <p className="text-lg text-muted-foreground">
             A day filled with inspiration, connection, and transformation.
@@ -46,7 +49,7 @@ const Highlights = () => {
 
         {/* Highlights Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {highlights.map((item, index) => (
+          {whatToExpect.items.map((item, index) => (
             <div
               key={index}
               className="group bg-card border border-border rounded-lg p-8 transition-all duration-300 hover:border-primary/50"

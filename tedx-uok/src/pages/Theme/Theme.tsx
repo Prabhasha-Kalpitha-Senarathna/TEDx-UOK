@@ -3,6 +3,7 @@ import { supabase } from "../../api/supabaseClient";
 import { useEvents } from "../../hooks/useEvents";
 import { useSpeakers } from "../../hooks/useSpeakers";
 import { formatTedxText } from "../../utils/textFormatting";
+import { Helmet } from "react-helmet-async";
 
 const SPEAKER_BUCKET = import.meta.env.VITE_SUPABASE_BUCKET_SPEAKER_PHOTOS;
 
@@ -48,12 +49,14 @@ const Theme = () => {
     image: getImageUrl(s.photo_url, SPEAKER_BUCKET),
   }));
 
-  const themeName = event?.theme || "Breaking Boundaries";
-  const themeParts = themeName.split(" ");
-  const secondPart = themeParts.slice(1).join(" ");
+  const themeName = event?.theme || "UNCHARTED";
 
   return (
     <main className="min-h-screen bg-background relative top-[-50px]">
+      <Helmet>
+        <title>{themeName} | TEDx University of Kelaniya 2026 Theme</title>
+        <meta name="description" content={`Explore the theme of TEDx University of Kelaniya 2026: ${themeName}. Ideas Worth Spreading.`} />
+      </Helmet>
       {/* Hero Section - Theme Title */}
       <section className="pt-24 pb-16 md:pt-32 md:pb-24 px-6">
         <div className="container mx-auto">
@@ -61,9 +64,9 @@ const Theme = () => {
             {formatTedxText("TEDx UoK 2026 Theme", true)}
           </p>
           <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-8 opacity-0 animate-fade-in-up animation-delay-100">
-            <span className="text-foreground">Breaking</span>
+            <span className="text-foreground">{themeName}</span>
             <br />
-            <span className="text-primary">{formatTedxText(secondPart || "Boundaries")}</span>
+            <span className="text-primary text-3xl sm:text-4xl md:text-5xl mt-4 block">{formatTedxText("Ideas Worth Spreading")}</span>
           </h1>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl opacity-0 animate-fade-in-up animation-delay-200">
             {formatTedxText(event?.description ||
@@ -80,16 +83,19 @@ const Theme = () => {
           </h2>
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
             <p>
-              Every significant advancement in human history began with someone
-              questioning the limits of what was possible. From the first tools
-              to the digital revolution, progress has always demanded that we
-              push against the boundaries that define our world.
+              For centuries, progress has begun at the edges of what is known. Every shift in thought and meaningful change has emerged when individuals and communities question existing boundaries and venture beyond familiar frameworks. These moments, often uncertain and uncomfortable, are where transformation begins.
             </p>
             <p>
-              "{formatTedxText(themeName)}" emerges from a simple observation: the most profound
-              changes happen at the edges where disciplines intersect, where
-              comfort zones end, and where the familiar gives way to the
-              unknown.
+              {formatTedxText(themeName)} represents these spaces of possibility. It represents the courage to explore without a complete map, to move forward when outcomes are not yet defined, and to challenge assumptions that quietly limit how we think, create, and live. In a world shaped by rapid change and complexity, remaining within well-worn paths is no longer sufficient.
+            </p>
+            <p>
+              At TEDx UoK 2026, {formatTedxText(themeName)} becomes a lens through which ideas are examined and shared. It invites conversations that cross disciplines, disrupt conventions, and reimagine the boundaries between knowledge, identity, and innovation. From scientific inquiry to personal storytelling, the ideas explored under this theme reflect a willingness to question, adapt, and evolve. They highlight the power of exploration across disciplines.
+            </p>
+            <p>
+              This theme is not about abandoning direction, but about recognising that some of the most valuable discoveries occur when we allow curiosity to lead. {formatTedxText(themeName)} acknowledges uncertainty as a space for learning where new perspectives emerge and unexplored connections are formed.
+            </p>
+            <p>
+              TEDx UoK 2026 invites speakers and audiences alike to engage with ideas that challenge the familiar and expand the possible. By stepping beyond established limits, {formatTedxText(themeName)} encourages us to reconsider where we are, where we are going, and what becomes possible when we act with intention.
             </p>
           </div>
         </div>

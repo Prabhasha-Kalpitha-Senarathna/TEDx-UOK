@@ -3,15 +3,23 @@ import { Button } from "../ui/Button";
 import { Link } from "react-router-dom";
 import { formatTedxText } from "../../utils/textFormatting";
 import DensePulseMap from "./DensePulseMap";
+
 interface props {
   date: string | null;
   venue: string | null;
-  theme: string | null;
+  theme?: string | null;
   ctaLabel?: string;
   ctaLink?: string;
 }
 
-const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
+const heroContent = {
+  title: "TEDx UoK",
+  subtitle: "Ideas Worth Spreading",
+  description:
+    "An independently organised TEDx event at University of Kelaniya, bringing together curious minds to explore ideas that inspire dialogue, understanding, and meaningful change.",
+};
+
+const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
   const eventDate = date
     ? new Date(date).toLocaleDateString("en-US", {
       year: "numeric",
@@ -21,7 +29,6 @@ const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
     : "Date To Be Announced";
 
   const eventVenue = venue || "Venue To Be Annouced";
-  const eventTheme = theme || "Theme To Be Annouced";
   const primaryLabel = ctaLabel || "Register Now";
   const primaryLink = ctaLink || "/register";
 
@@ -55,16 +62,21 @@ const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
 
             {/* Main Title */}
             <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-6 opacity-0 animate-fade-in-up animation-delay-100">
-              {formatTedxText("TEDx UoK", true)}
+              {formatTedxText(heroContent.title, true)}
             </h1>
 
-            {/* Theme */}
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-8 opacity-0 animate-fade-in-up animation-delay-200">
-              {formatTedxText(eventTheme, true)}
+            {/* Subtitle */}
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-4 opacity-0 animate-fade-in-up animation-delay-200">
+              {formatTedxText(heroContent.subtitle, true)}
             </h2>
 
+            {/* Description */}
+            <p className="text-lg text-muted-foreground mb-8 max-w-xl opacity-0 animate-fade-in-up animation-delay-300">
+              {formatTedxText(heroContent.description)}
+            </p>
+
             {/* Event Details */}
-            <div className="flex flex-col sm:flex-row gap-6 mb-12 opacity-0 animate-fade-in-up animation-delay-300">
+            <div className="flex flex-col sm:flex-row gap-6 mb-12 opacity-0 animate-fade-in-up animation-delay-400">
               <div className="flex items-center gap-3">
                 <div className="w-px h-8 bg-primary" />
                 <div>
@@ -90,7 +102,7 @@ const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animation-delay-400">
+            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up animation-delay-500">
               <Link to={primaryLink}>
                 <Button variant="tedxPrimary" size="xl">
                   {primaryLabel}
@@ -116,5 +128,6 @@ const Hero = ({ date, venue, theme, ctaLabel, ctaLink }: props) => {
     </section>
   );
 };
+
 
 export default Hero;
