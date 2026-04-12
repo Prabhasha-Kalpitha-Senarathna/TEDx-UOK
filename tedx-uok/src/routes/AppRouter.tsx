@@ -29,6 +29,7 @@ import PaymentCancelPage from "../pages/Payment/PaymentCancelPage";
 import CommunityRegistrationPage from "../pages/Community/CommunityPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
 import ComingSoon from "../pages/ComingSoon/ComingSoon";
+import AdminLoginPage from "../pages/Admin/AdminLoginPage";
 
 import ScrollToTop from "../components/common/ScrollToTop";
 
@@ -37,6 +38,8 @@ function AnimatedRoutes() {
 
   return (
     <Routes location={location}>
+      <Route path="/admin/login" element={<AdminLoginPage />} />
+
       <Route
         path="/"
         element={
