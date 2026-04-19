@@ -82,12 +82,12 @@ const DensePulseMap = () => {
       </style>
 
       {/* Adjust container styling to fit the new Map.png nicely */}
-      <div className="relative w-full bg-transparent overflow-hidden">
+      <div className="relative w-full h-full bg-transparent overflow-hidden">
         {/* Map image native height */}
         <img
           src="/Map.jpg"
           alt="Event Map"
-          className="w-full h-auto dense-map-custom-image pointer-events-none"
+          className="w-full h-full object-cover dense-map-custom-image pointer-events-none"
         />
 
         {/* SVG Route Line Overlay */}
