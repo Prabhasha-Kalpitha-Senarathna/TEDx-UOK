@@ -49,7 +49,7 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
       <div className="absolute left-0 top-1/4 w-1 h-32 bg-primary" />
 
       <div className="container mx-auto px-6 pt-24 pb-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center lg:items-stretch">
           {/* Left Content */}
           <div>
             {/* Event Badge */}
@@ -118,8 +118,8 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
           </div>
 
           {/* Right Visual Element - Provided Map */}
-          <div className="hidden lg:flex items-center justify-end relative opacity-0 animate-fade-in animation-delay-300 pr-0 mr-[-25%]">
-            <div className="relative w-[130%] max-w-[850px] translate-x-[-15%]">
+          <div className="hidden lg:flex items-stretch justify-end relative opacity-0 animate-fade-in animation-delay-300 pr-0 mr-[-32%] self-stretch">
+            <div className="relative w-[150%] max-w-[950px] h-full min-h-[85vh] translate-x-[-15%]">
               <DensePulseMap />
             </div>
           </div>
