@@ -22,10 +22,10 @@ const heroContent = {
 const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
   const eventDate = date
     ? new Date(date).toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
     : "Date To Be Announced";
 
   const eventVenue = venue || "Venue To Be Annouced";
@@ -48,8 +48,8 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
       {/* Subtle Red Accent Line */}
       <div className="absolute left-0 top-1/4 w-1 h-32 bg-primary" />
 
-      <div className="container mx-auto px-6 pt-24 pb-16 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center lg:items-stretch">
+      <div className="container mx-auto px-4 sm:px-6 pt-20 sm:pt-24 pb-12 sm:pb-16 relative z-10">
+        <div className="grid lg:grid-cols-[1fr_1.35fr] gap-10 lg:gap-12 items-center lg:items-stretch">
           {/* Left Content */}
           <div>
             {/* Event Badge */}
@@ -61,17 +61,17 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
             </div>
 
             {/* Main Title */}
-            <h1 className="relative text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-6 opacity-0 animate-fade-in-up animation-delay-100">
+            <h1 className="relative whitespace-normal sm:whitespace-nowrap text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold leading-[0.95] mb-6 opacity-0 animate-fade-in-up animation-delay-100">
               {formatTedxText(heroContent.title, true)}
             </h1>
 
             {/* Subtitle */}
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-4 opacity-0 animate-fade-in-up animation-delay-200">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-foreground mb-4 opacity-0 animate-fade-in-up animation-delay-200">
               {formatTedxText(heroContent.subtitle, true)}
             </h2>
 
             {/* Description */}
-            <p className="text-lg text-muted-foreground mb-8 max-w-xl opacity-0 animate-fade-in-up animation-delay-300">
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-xl opacity-0 animate-fade-in-up animation-delay-300">
               {formatTedxText(heroContent.description)}
             </p>
 
@@ -83,7 +83,7 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">
                     Date
                   </p>
-                  <p className="text-lg font-medium text-foreground">
+                  <p className="text-base sm:text-lg font-medium text-foreground">
                     {eventDate}
                   </p>
                 </div>
@@ -94,7 +94,7 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
                   <p className="text-xs text-muted-foreground uppercase tracking-wider">
                     Venue
                   </p>
-                  <p className="text-lg font-medium text-foreground">
+                  <p className="text-base sm:text-lg font-medium text-foreground">
                     {eventVenue}
                   </p>
                 </div>
@@ -118,8 +118,8 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
           </div>
 
           {/* Right Visual Element - Provided Map */}
-          <div className="hidden lg:flex items-stretch justify-end relative opacity-0 animate-fade-in animation-delay-300 pr-0 mr-[-32%] self-stretch">
-            <div className="relative w-[150%] max-w-[950px] h-full min-h-[85vh] translate-x-[-15%]">
+          <div className="flex items-center justify-center lg:justify-end relative opacity-0 animate-fade-in animation-delay-300 mt-10 lg:mt-0 lg:mr-[-10%] self-stretch">
+            <div className="relative w-full max-w-176 aspect-16/10 sm:aspect-18/10 lg:w-[132%] lg:max-w-300 lg:aspect-video lg:min-h-[72vh] lg:translate-x-[-3%] overflow-hidden">
               <DensePulseMap />
             </div>
           </div>
@@ -128,6 +128,5 @@ const Hero = ({ date, venue, ctaLabel, ctaLink }: props) => {
     </section>
   );
 };
-
 
 export default Hero;
