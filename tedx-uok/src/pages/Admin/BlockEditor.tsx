@@ -24,6 +24,7 @@ export default function BlockEditor({ blocks, onChange }: BlockEditorProps) {
       content: "",
       level: type === "heading" ? 2 : undefined,
       align: type === "image" ? "center" : undefined,
+      spacingSize: type === "divider" ? "md" : undefined,
     };
 
     if (!afterId) {
@@ -153,6 +154,44 @@ export default function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                 </select>
               )}
 
+              {/* Text alignment for text blocks */}
+              {(block.type === "paragraph" || block.type === "heading" || block.type === "quote") && (
+                <div className="flex items-center gap-0.5 ml-2 bg-[#1F1F1F] rounded overflow-hidden">
+                  {(["left", "center", "right"] as const).map((dir) => (
+                    <button
+                      key={dir}
+                      onClick={() => updateBlock(block.id, { textAlign: block.textAlign === dir ? undefined : dir })}
+                      title={`Align ${dir}`}
+                      className={`text-xs px-2 py-1 transition-colors ${
+                        block.textAlign === dir
+                          ? "bg-[#EB0028] text-white"
+                          : "text-white/40 hover:text-white"
+                      }`}
+                    >
+                      {dir === "left" ? "≡L" : dir === "center" ? "≡C" : "≡R"}
+                    </button>
+                  ))}
+                </div>
+              )}
+
+              {/* Font family for text blocks */}
+              {(block.type === "paragraph" || block.type === "heading") && (
+                <select
+                  value={block.fontFamily ?? ""}
+                  onChange={(e) =>
+                    updateBlock(block.id, {
+                      fontFamily: e.target.value || undefined,
+                    })
+                  }
+                  className="text-xs bg-[#1F1F1F] text-white px-2 py-1 rounded border-0 outline-none ml-2"
+                >
+                  <option value="">Default</option>
+                  <option value="'Helvetica Neue', Helvetica, Arial, sans-serif">Sans-serif</option>
+                  <option value="Georgia, 'Times New Roman', serif">Serif</option>
+                  <option value="'Courier New', Courier, monospace">Monospace</option>
+                </select>
+              )}
+
               {/* Image alignment */}
               {block.type === "image" && (
                 <select
@@ -167,6 +206,23 @@ export default function BlockEditor({ blocks, onChange }: BlockEditorProps) {
                   <option value="left">Left</option>
                   <option value="center">Center</option>
                   <option value="right">Right</option>
+                </select>
+              )}
+
+              {/* Divider spacing */}
+              {block.type === "divider" && (
+                <select
+                  value={block.spacingSize ?? "md"}
+                  onChange={(e) =>
+                    updateBlock(block.id, {
+                      spacingSize: e.target.value as Block["spacingSize"],
+                    })
+                  }
+                  className="text-xs bg-[#1F1F1F] text-white px-2 py-1 rounded border-0 outline-none ml-2"
+                >
+                  <option value="sm">Spacing: Small</option>
+                  <option value="md">Spacing: Medium</option>
+                  <option value="lg">Spacing: Large</option>
                 </select>
               )}
 
@@ -187,6 +243,10 @@ export default function BlockEditor({ blocks, onChange }: BlockEditorProps) {
               rows={4}
               placeholder="Write your paragraph here..."
               className="w-full bg-transparent text-white/90 text-sm leading-relaxed outline-none resize-y placeholder-white/20"
+              style={{
+                textAlign: block.textAlign ?? "left",
+                fontFamily: block.fontFamily ?? undefined,
+              }}
             />
           )}
 
@@ -199,6 +259,10 @@ export default function BlockEditor({ blocks, onChange }: BlockEditorProps) {
               className={`w-full bg-transparent text-white outline-none placeholder-white/20 ${
                 block.level === 2 ? "text-2xl font-bold" : "text-xl font-bold"
               }`}
+              style={{
+                textAlign: block.textAlign ?? "left",
+                fontFamily: block.fontFamily ?? undefined,
+              }}
             />
           )}
 
@@ -209,10 +273,20 @@ export default function BlockEditor({ blocks, onChange }: BlockEditorProps) {
               rows={2}
               placeholder="Enter a quote or highlighted text..."
               className="w-full bg-transparent text-white/80 text-lg italic outline-none resize-y placeholder-white/20 border-l-4 border-[#EB0028] pl-4"
+              style={{
+                textAlign: block.textAlign ?? "left",
+              }}
             />
           )}
 
-          {block.type === "divider" && <hr className="border-[#1F1F1F]" />}
+          {block.type === "divider" && (() => {
+            const previewPy = block.spacingSize === "lg" ? "py-10" : block.spacingSize === "sm" ? "py-3" : "py-6";
+            return (
+              <div className={`flex items-center ${previewPy}`}>
+                <hr className="w-full border-t border-white/15" />
+              </div>
+            );
+          })()}
 
           {block.type === "image" && (
             <div className="space-y-3">
